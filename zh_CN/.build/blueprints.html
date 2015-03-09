@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>蓝图 &mdash; Explore Flask 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Explore Flask 1.0 documentation" href="index.html"/>
+        <link rel="next" title="模板" href="templates.html"/>
+        <link rel="prev" title="视图和路由的高级模式" href="views.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Explore Flask</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#pep">让我们来个 PEP 动员！</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#id3">相对导入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#id4">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">环境</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#virtualenv">使用 virtualenv 管理你的环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#id6">版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#id8">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#id12">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="organizing.html">组织你的项目</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id2">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id4">组织模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id10">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id2">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id3">实例文件夹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id8">基于环境变量配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id9">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">视图和路由的高级模式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#id2">视图装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#url-converters">URL 转换器(converters)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#id9">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">蓝图</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">什么是蓝图？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">为什么要使用蓝图？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">你把它们放哪里？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">你如何使用它们？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">使用蓝图重构小的应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id18">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">模板</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#jinja">Jinja 快速入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id3">如何组织模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id4">继承</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id6">创建宏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id9">自定义过滤器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id11">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="static.html">静态文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="static.html#id2">组织你的静态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static.html#flask-assets">使用 Flask-Assets 管理静态资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="static.html#id7">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="storing.html">存储数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="storing.html#sqlalchemy">SQLAlchemy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storing.html#id5">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">处理表单</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#flask-wtf">Flask-WTF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#id9">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">处理用户的模式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id2">确认电子邮箱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id3">存储密码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id5">认证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id7">忘记密码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id8">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">部署</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#id2">主机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#id3">部署方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#id7">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">结尾</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Explore Flask</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>蓝图</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/blueprints.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>蓝图<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<img alt="Blueprints" src="_images/blueprints.png" />
+<div class="section" id="id2">
+<h2>什么是蓝图？<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>一个蓝图定义了视图，模板，静态文件以及可以用于应用程序的其它元素的集合。例如，让我们假设下我们有一个管理面板的蓝图。这个蓝图会定义一些包含像 <em>/admin/login</em> 和 <em>/admin/dashboard</em> 路由的视图。它也可能包含服务于这些路由的模板以及静态文件。接着我们可以使用这个蓝图添加一个管理面板到我们的应用程序中，不论我们的应用程序是什么类型的。</p>
+</div>
+<div class="section" id="id3">
+<h2>为什么要使用蓝图？<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>蓝图“杀手级”使用场景就是把我们的应用程序组织成不同的组件。对于一个类似 Twitter 的微型博客，我们可能有一个针对网站页面的蓝图，例如，<em>index.html</em> 和 <em>about.html</em>。接着我们还有另外一个带有登录面板的蓝图，在那里我们显示了所有最新的文章，然后我们还有一个用于管理员面板的蓝图。网站的每一个不同的区域也能够被分成不同区域的代码来实现。这能够让我们用几个小的 “apps” 构建我们的应用程序，每一个 apps 都在做一件事情。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">请从 Flask 官方文档中 <a class="reference external" href="http://flask.pocoo.org/docs/blueprints/#why-blueprints">&#8220;为什么使用蓝图&#8221;</a> 阅读更多地使用蓝图的益处（中文版位于：<a class="reference external" href="http://www.pythondoc.com/flask/blueprints.html#id2">http://www.pythondoc.com/flask/blueprints.html#id2</a>）。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>你把它们放哪里？<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>使用蓝图组织我们的应用程序有很多的方式。通常情况下，我们可以考虑按功能结构和分区这两种选择（功能结果和分区这两个词语我借鉴了商业上的概念）。</p>
+<div class="section" id="id6">
+<h3>功能结构<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>按照功能结构的话，你可以通过它们所做的事情来组织你的应用程序的结构。模板在一个文件夹中，静态文件在另一个文件夹中，视图在第三个文件夹中。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre>yourapp/
+    __init__.py
+    static/
+    templates/
+        home/
+        control_panel/
+        admin/
+    views/
+        __init__.py
+        home.py
+        control_panel.py
+        admin.py
+    models.py
+</pre></div>
+</td></tr></table></div>
+<p>除了 <em>yourapp/views/__init__.py</em>，在上面列表中的 <em>yourapp/views/</em> 文件夹中的每一个 <em>.py</em> 文件都是一个蓝图。在 <em>yourapp/__init__.py</em> 中我们要导入这些蓝图并且在我们的 <code class="docutils literal"><span class="pre">Flask()</span></code> 对象中 <strong>注册</strong> 它们。我们会在本章的后面看看实现方式。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Flask 站点：<a class="reference external" href="http://flask.pocoo.org">http://flask.pocoo.org</a> 使用的就是这种结构。你自己可以到 <a class="reference external" href="https://github.com/mitsuhiko/flask-website/tree/master/flask_website">GitHub</a> 上一睹真容。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>分区<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>对于分区结构了，你可以基于它们有助于应用程序的哪一部分来组织应用程序的结构。管理面板所有的模板，视图以及静态文件都在一个文件夹中，用户控制的所有的模板，视图和静态文件在另一个文件夹中。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre>yourapp/
+    __init__.py
+    admin/
+        __init__.py
+        views.py
+        static/
+        templates/
+    home/
+        __init__.py
+        views.py
+        static/
+        templates/
+    control_panel/
+        __init__.py
+        views.py
+        static/
+        templates/
+    models.py
+</pre></div>
+</td></tr></table></div>
+<p>像上面列出的应用程序的分区结构，在 <em>yourapp/</em> 中每一个文件夹都是一个单独的蓝图。所有的这些蓝图都会应用到顶层 <em>__init__.py</em> 中的 <code class="docutils literal"><span class="pre">Flask()</span></code> 对象中。</p>
+</div>
+<div class="section" id="id8">
+<h3>哪一个是最好的？<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>你选择的组织结构很大程度上是一种个人决定。唯一的区别是层次结构的表示方式，因此你可以自由地决策要使用的组织结构，你可以选择一个对自己有意义的。</p>
+<p>如果你的应用程序大部分是独立的结构，仅仅共享着像模型和配置，分区结构就是合适的选择方式。一个例子就是让用户建立网站的 SaaS 应用程序。你可能就有蓝图分别针对主页，控制面板，用户网站，以及管理面板。这些组件可能有安全不同的静态文件和布局。如果考虑负责这个应用程序或者分拆/重构这个应用程序的话，分区结构会更加适用一些。</p>
+<p>另一方面，如果你的应用程序联系地更加紧密一些的话，它可能用一个功能结构呈现更加合适。一个示例就是 Facebook。如果 Facebook 使用 Flask 的话，它可能就有静态页（例如，登录-注销页，注册，关于等等），控制面板（例如，新闻源），个人主页（<em>/robert/about</em> 以及
+<em>/robert/photos</em>），设置（<em>/settings/security</em> 和
+<em>/settings/privacy</em>）等等一些蓝图。这些组件共享一个通用的布局和样式，但是每一个也会有自己的布局。下面的列表中展示了一个进行大量删减版的 Facebook 的样子，如果它是使用 Flask 构建的话。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre>facebook/
+    __init__.py
+    templates/
+        layout.html
+        home/
+            layout.html
+            index.html
+            about.html
+            signup.html
+            login.html
+        dashboard/
+            layout.html
+            news_feed.html
+            welcome.html
+            find_friends.html
+        profile/
+            layout.html
+            timeline.html
+            about.html
+            photos.html
+            friends.html
+            edit.html
+        settings/
+            layout.html
+            privacy.html
+            security.html
+            general.html
+    views/
+        __init__.py
+        home.py
+        dashboard.py
+        profile.py
+        settings.py
+    static/
+        style.css
+        logo.png
+    models.py
+</pre></div>
+</td></tr></table></div>
+<p>在 <em>facebook/views/</em> 中的蓝图仅仅是视图的集合而不是完全独立的组件。相同的静态文件将会大多数的蓝图的视图使用。大多数模板都会扩展一个主模板。功能结构是组织这个项目的一种好的方式。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>你如何使用它们？<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h3>基本用法<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>让我们看看 Facebook 示例中的其中一个蓝图的代码。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># facebook/views/profile.py</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span>
+
+<span class="n">profile</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;profile&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+
+<span class="nd">@profile.route</span><span class="p">(</span><span class="s">&#39;/&lt;user_url_slug&gt;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">timeline</span><span class="p">(</span><span class="n">user_url_slug</span><span class="p">):</span>
+    <span class="c"># Do some stuff</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/timeline.html&#39;</span><span class="p">)</span>
+
+<span class="nd">@profile.route</span><span class="p">(</span><span class="s">&#39;/&lt;user_url_slug&gt;/photos&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">photos</span><span class="p">(</span><span class="n">user_url_slug</span><span class="p">):</span>
+    <span class="c"># Do some stuff</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/photos.html&#39;</span><span class="p">)</span>
+
+<span class="nd">@profile.route</span><span class="p">(</span><span class="s">&#39;/&lt;user_url_slug&gt;/about&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">about</span><span class="p">(</span><span class="n">user_url_slug</span><span class="p">):</span>
+    <span class="c"># Do some stuff</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/about.html&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>要创建一个蓝图对象，我们先导入 <code class="docutils literal"><span class="pre">Blueprint()</span></code> 类并且用参数 <code class="docutils literal"><span class="pre">name</span></code> 和 <code class="docutils literal"><span class="pre">import_name</span></code> 初始化它。通常情况下，<code class="docutils literal"><span class="pre">import_name</span></code> 就是 <code class="docutils literal"><span class="pre">__name__</span></code>，这是一个包含当前模块名称的特殊 Python 变量。</p>
+<p>在这个 Facebook 示例中我们使用了一个功能结构。如果我们使用分区结构的话，我们要通知 Flask 蓝图有自己的模板和静态文件夹。此块的代码大概的样子如下所示。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">profile</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;profile&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">,</span>
+                    <span class="n">template_folder</span><span class="o">=</span><span class="s">&#39;templates&#39;</span><span class="p">,</span>
+                    <span class="n">static_folder</span><span class="o">=</span><span class="s">&#39;static&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>现在我们已经定义我们的蓝图。是时候在我们的 Flask 应用程序中注册它。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># facebook/__init__.py</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">.views.profile</span> <span class="kn">import</span> <span class="n">profile</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>现在定义在 <em>facebook/views/profile.py</em> 上的路由（例如，<code class="docutils literal"><span class="pre">/&lt;user_url_slug&gt;</span></code>）在应用程序上注册并且表现得像你使用 <code class="docutils literal"><span class="pre">&#64;app.route()</span></code> 定义它们一样。</p>
+</div>
+<div class="section" id="url">
+<h3>使用动态的 URL 前缀<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h3>
+<p>继续 Facebook 例子，注意到所有的用户资料路由都是以 <code class="docutils literal"><span class="pre">&lt;user_url_slug&gt;</span></code> 开始并且把它的值传递给视图。我们希望用户们能够通过浏览像 <em>https://facebo-ok.com/john.doe</em> URL 访问用户资料页。我们可以通过为所有的蓝图的路由定义一个动态的前缀来停止重复工作。</p>
+<p>蓝图可以让我们定义动态和静态的前缀。我们可以通知 Flask 在一个蓝图中的所有的路由都是以 <em>/profile</em> 为前缀的（这里的 <em>/profile</em> 只是一个示例），这就是一个静态的前缀。至于 Facebook 示例，前缀是基于浏览的用户资料而变化。无论他们浏览哪个用户的个人资料，我们都应该在 URL 标签中显示。这就是一个动态的前缀。</p>
+<p>我们可以选择在什么时候定义我们的前缀。我们可以在两个地方中的任意一个定义前缀：当我们实例化 <code class="docutils literal"><span class="pre">Blueprint()</span></code> 类或者当我们用 <code class="docutils literal"><span class="pre">app.register_blueprint()</span></code> 注册它的时候。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># facebook/views/profile.py</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span>
+
+<span class="n">profile</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;profile&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s">&#39;/&lt;user_url_slug&gt;&#39;</span><span class="p">)</span>
+
+<span class="c"># [...]</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># facebook/__init__.py</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">.views.profile</span> <span class="kn">import</span> <span class="n">profile</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s">&#39;/&lt;user_url_slug&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>尽管没有任何技术因素限制任何一种方法，最好是在注册的时候统一定义可用的前缀。这使得以后修改或者调整更加容易和方便些。因为这个原因，我建议在注册的时候设置 <code class="docutils literal"><span class="pre">url_prefix</span></code>。</p>
+<p>我们可以在动态前缀中使用转换器，就像在 <code class="docutils literal"><span class="pre">route()</span></code> 调用中一样。这个也包含了我们自定义的转换器。当使用了转换器，我们可以在把前缀交给视图之前进行预处理。在这个例子中我们要基于传入到我们用户资料蓝图的 URL 中的 user_url_slug 来获取用户对象。这里我们需要使用 <code class="docutils literal"><span class="pre">url_value_preprocessor()</span></code> 装饰一个函数来完成这个需求。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># facebook/views/profile.py</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Blueprint</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">g</span>
+
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">User</span>
+
+<span class="c"># The prefix is defined on registration in facebook/__init__.py.</span>
+<span class="n">profile</span> <span class="o">=</span> <span class="n">Blueprint</span><span class="p">(</span><span class="s">&#39;profile&#39;</span><span class="p">,</span> <span class="n">__name__</span><span class="p">)</span>
+
+<span class="nd">@profile.url_value_preprocessor</span>
+<span class="k">def</span> <span class="nf">get_profile_owner</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter_by</span><span class="p">(</span><span class="n">url_slug</span><span class="o">=</span><span class="n">values</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;user_url_slug&#39;</span><span class="p">))</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">profile_owner</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">first_or_404</span><span class="p">()</span>
+
+<span class="nd">@profile.route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">timeline</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/timeline.html&#39;</span><span class="p">)</span>
+
+<span class="nd">@profile.route</span><span class="p">(</span><span class="s">&#39;/photos&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">photos</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/photos.html&#39;</span><span class="p">)</span>
+
+<span class="nd">@profile.route</span><span class="p">(</span><span class="s">&#39;/about&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">about</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/about.html&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>我们使用 <code class="docutils literal"><span class="pre">g</span></code> 对象来存储用户对象并且 <code class="docutils literal"><span class="pre">g</span></code> 可以在 Jinja2 模板中使用。这就意味着对于实现一个极其简单的系统的话，我们现在要做的就是在视图中渲染模板。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>{# facebook/templates/profile/photos.html #}
+
+{% extends &quot;profile/layout.html&quot; %}
+
+{% for photo in g.profile_owner.photos.all() %}
+    &lt;img src=&quot;{{ photo.source_url }}&quot; alt=&quot;{{ photo.alt_text }}&quot; /&gt;
+{% endfor %}
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Flask 官方文档中有一篇关于使用前缀为国际化你的 URLs 的 <a class="reference external" href="http://flask.pocoo.org/docs/patterns/urlprocessors/#internationalized-blueprint-urls">一个伟大的教程</a> 。</li>
+</ul>
+</div>
+</div>
+<div class="section" id="subdomain">
+<h3>使用动态的子域（subdomain）<a class="headerlink" href="#subdomain" title="Permalink to this headline">¶</a></h3>
+<p>许多 SaaS（软件即服务）的应用程序目前提供用户一个子域，用户可以使用这个子域来访问他们的软件。例如，Harvest 是一个时间追踪管理应用程序，它允许你从 yourname.harvestapp.com 访问你的控制面板。这里我将向你展示如何使用 Flask 处理自动生成的子域像 Harvest 一样。</p>
+<p>对于这一部分，我们将要使用允许用户创建他们自己的网站的应用程序示例。假设我们的应用程序有三个蓝图，它们分别用于用户登录的主页，用户构建他们的网站的用户管理面板以及用户的网站。由于这三部分是不相关的，我们用分区结构来组织结构。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></div></td><td class="code"><div class="highlight"><pre>sitemaker/
+    __init__.py
+    home/
+        __init__.py
+        views.py
+        templates/
+            home/
+        static/
+            home/
+    dash/
+        __init__.py
+        views.py
+        templates/
+            dash/
+        static/
+            dash/
+    site/
+        __init__.py
+        views.py
+        templates/
+            site/
+        static/
+            site/
+    models.py
+</pre></div>
+</td></tr></table></div>
+<p>下面的表格展示了本应用程序中所有的蓝图。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="15%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">URL</th>
+<th class="head">Route</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sitemaker.com</td>
+<td>sitemaker/home</td>
+<td>只是一个普通的蓝图。围绕 <em>index.html</em>，<em>about.html</em>
+以及 <em>pricing.html</em> 的视图，模板以及静态文件。</td>
+</tr>
+<tr class="row-odd"><td>bigdaddy.sitemaker.com</td>
+<td>sitemaker/site</td>
+<td>这个蓝图使用一个动态的子域并且包含用户网站的元素。
+我们会在下面介绍一些用于实现这个蓝图的代码。</td>
+</tr>
+<tr class="row-even"><td>bigdaddy.sitemaker.com/admin</td>
+<td>sitemaker/dash</td>
+<td>这个蓝图使用了一个动态的子域和一个 URL 前缀。</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以用定义我们 URL 前缀同样的方式来定义我们的动态子域。两个选择：在蓝图文件夹或者在顶层的 <em>__init__.py</em> 中都是可用的，但是我们坚持再一次把它定义在 <em>sitemaker/__init.py__</em> 中。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># sitemaker/__init__.py</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">.site</span> <span class="kn">import</span> <span class="n">site</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">subdomain</span><span class="o">=</span><span class="s">&#39;&lt;site_subdomain&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>因为我们使用了分层结构，我们会在 <em>sitema-ker/site/__init__.py</em> 中定义蓝图。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre># sitemaker/site/__init__py
+
+from flask import Blueprint
+
+from ..models import Site
+
+# Note that the capitalized Site and the lowercase site
+# are two completely separate variables. Site is a model
+# and site is a blueprint.
+
+site = Blueprint(&#39;site&#39;, __name__)
+
+@site.url_value_preprocessor
+def get_site(endpoint, values):
+    query = Site.query.filter_by(subdomain=values.pop(&#39;site_subdomain&#39;))
+    g.site = query.first_or_404()
+
+# Import the views after site has been defined. The views
+# module will needto import &#39;site&#39; so we need to make
+# sure that we import views after site has been defined.
+import .views
+</pre></div>
+</td></tr></table></div>
+<p>现在我们从数据库中获取了站点信息，我们将会把用户的站点展示给正在请求他们子域的访问者。</p>
+<p>为了让 Flask 能和子域一起工作，我们将需要指定 <code class="docutils literal"><span class="pre">SERVER_NAME</span></code> 配置变量。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># config.py</span>
+
+<span class="n">SERVER_NAME</span> <span class="o">=</span> <span class="s">&#39;sitemaker.com&#39;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>几分钟以前，当我正在起草这一章节的时候，有人在 IRC 说他们的子域在开发环境上工作正常，但是在生产环境上不正常。我问他们是否已经配置 <code class="docutils literal"><span class="pre">SERVER_NAME</span></code>，事实证明他们在开发环境上设置但是没有在生产环境上配置。在生产环境上设置了 <code class="docutils literal"><span class="pre">SERVER_NAME</span></code> 解决他们的问题。</p>
+<p>在 <a class="reference external" href="http://dev.pocoo.org/irclogs/%23pocoo.2013-07-30.log">http://dev.pocoo.org/irclogs/%23pocoo.2013-07-30.log</a> 上可以看到我和 aplavin 之间的对话。</p>
+<p class="last">我觉得这是足够巧合的，并且值得列入本节。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">你可以同时设置一个子域和前缀。这里大家可以考虑考虑如何配置它们。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>使用蓝图重构小的应用程序<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>我们将会介绍把一个应用程序重构成使用蓝图的步骤。我们选择一个很典型的 Flask 应用程序并且重构它。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>config.txt
+requirements.txt
+run.py
+U2FtIEJsYWNr/
+  __init__.py
+  views.py
+  models.py
+  templates/
+  static/
+tests/
+</pre></div>
+</td></tr></table></div>
+<p><em>views.py</em> 文件已经增长到 10,000 行的代码！我们一直待拖延重构它的时间，但是现在是时候重构。<em>views.py</em> 文件包含我们网站每一部分的视图。这些部分分别是主页，用户控制面板，管理控制面板，API 和公司的博客。</p>
+<div class="section" id="id13">
+<h3>步骤 1：分区或者功能？<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p>这个应用是有完全不同的部分组成。例如，用户控制面板和公司博客之间的模板和静态文件是完全不共享的。我们将选择分区结构。</p>
+</div>
+<div class="section" id="id14">
+<h3>步骤 2：移动一些文件<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">在你对你的应用程序做出任何改变之前，都应该提交到版本控制中。你也不想不小心删除一些东西吧。</p>
+</div>
+<p>下一步我们将继续前进，并且为我们新的应用程序创建目录树。我们可以在一个包目录里为每一个蓝图创建一个文件夹。接着我们将完整地复制 <em>views.py</em>，<em>static/</em> 和 <em>templates/</em> 到每个蓝图目录。最后，我们可以从顶层包目录中删除它们（<em>views.py</em>，<em>static/</em> 和 <em>templates/</em>）。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre>config.txt
+requirements.txt
+run.py
+U2FtIEJsYWNr/
+  __init__.py
+  home/
+    views.py
+    static/
+    templates/
+  dash/
+    views.py
+    static/
+    templates/
+  admin/
+    views.py
+    static/
+    templates/
+  api/
+    views.py
+    static/
+    templates/
+  blog/
+    views.py
+    static/
+    templates/
+  models.py
+tests/
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id15">
+<h3>步骤 3：废话少说<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>现在我们可以到每一个蓝图目录中去删除那些不属于该蓝图的视图，静态文件和模板。你如何做这一步很大程度上取决你的应用程序是如何组织结构的。</p>
+<p>最终的结果就是每一个蓝图只有一个 <em>views.py</em> 文件，并且 <em>views.py</em> 文件内的函数只适用于本蓝图。没有两个蓝图会为同一个路由定义一个视图。每一个 <em>templates/</em> 目录只包含在本蓝图的视图中使用的模板。每一个 <em>static/</em> 目录应该只包含有本蓝图使用的静态文件。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">特别地注意：需要减少所有不必要的导入。这是很容易忘记的事情，最乐观的情况下它只会让你的代码显得有些混论，但是最差情况下，它们拖慢你的应用程序。</p>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>步骤 4：蓝图<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>这是我们把我们的目录转变成为蓝图的关键一步。关键就是在 <em>__init__.py</em> 文件。首先，我们看看 API 蓝图的定义。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre># U2FtIEJsYWNr/api/__init__.py
+
+from flask import Blueprint
+
+api = Blueprint(
+    &#39;site&#39;,
+    __name__,
+    template_folder=&#39;templates&#39;,
+    static_folder=&#39;static&#39;
+)
+
+import .views
+</pre></div>
+</td></tr></table></div>
+<p>接下来我们在 U2FtIEJsYWNr 包顶层 <em>__init__.py</em> 文件里注册这个蓝图。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># U2FtIEJsYWNr/__init__.py</span>
+
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<span class="kn">from</span> <span class="nn">.api</span> <span class="kn">import</span> <span class="n">api</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="c"># Puts the API blueprint on api.U2FtIEJsYWNr.com.</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">subdomain</span><span class="o">=</span><span class="s">&#39;api&#39;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>确保路由是注册到蓝图上而不是应用程序（app）对象上。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># U2FtIEJsYWNr/views.py</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">app</span>
+
+<span class="nd">@app.route</span><span class="p">(</span><span class="s">&#39;/search&#39;</span><span class="p">,</span> <span class="n">subdomain</span><span class="o">=</span><span class="s">&#39;api&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">api_search</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># U2FtIEJsYWNr/api/views.py</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">api</span>
+
+<span class="nd">@api.route</span><span class="p">(</span><span class="s">&#39;/search&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">search</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id17">
+<h3>步骤 5：享受<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>现在我们应用比起它原来一个庞大的 <em>views.py</em> 文件已经是大大地模块化了。路由的定义十分简单，因为我们可以在每一个蓝图里面单独定义并且可以为每个蓝图像子域和 URL 前缀一样配置。</p>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>摘要<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>一个蓝图定义了视图，模板，静态文件以及可以用于应用程序的其它元素的集合。</li>
+<li>蓝图是组织你的应用程序的一种很好的方式。</li>
+<li>在分区结构中，每一个蓝图是一个视图，模板，静态文件的集合，它们构成了应用程序的一部分。</li>
+<li>在功能结构中，每一个蓝图只是视图的集合。所有的模板放在一起，静态文件也一样。</li>
+<li>要使用一个蓝图，你首先需要定义它，接着通过调用 <code class="docutils literal"><span class="pre">Flask.register_blueprint().</span></code> 来注册它。</li>
+<li>你可以定义一个动态的 URL 前缀，它能够用于在一个蓝图里所有的路由。</li>
+<li>你也可以定义一个动态的子域，它能够用于一个蓝图里所有的路由。</li>
+<li>使用蓝图重构一个越来越大的应用程序能够用 5 个小步骤来完成。</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="templates.html" class="btn btn-neutral float-right" title="模板"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="views.html" class="btn btn-neutral" title="视图和路由的高级模式"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Robert Picard.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50579609-1', 'exploreflask.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>

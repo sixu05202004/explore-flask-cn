@@ -17,9 +17,7 @@ Explore Flask 中文翻译
 构建
 --------
 
-Just ``cd`` into the repo and run ``sphinx-build -b html source/ build/`` to build
-the website. Feel free to try your hand at building other formats, but HTML is
-the only officially supported one right now.
+只要 ``cd`` 到 repo 并且运行 ``sphinx-build -b html zh-CN/ build/`` 来构建网站。请随意地构建其它的格式，但是目前 HTML 是官方唯一支持的。
 
 说明
 --------

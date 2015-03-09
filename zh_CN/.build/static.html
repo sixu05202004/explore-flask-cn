@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>静态文件 &mdash; Explore Flask 1.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Explore Flask 1.0 documentation" href="index.html"/>
+        <link rel="next" title="存储数据" href="storing.html"/>
+        <link rel="prev" title="模板" href="templates.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> Explore Flask</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#pep">让我们来个 PEP 动员！</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#id3">相对导入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html#id4">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="environment.html">环境</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#virtualenv">使用 virtualenv 管理你的环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#id6">版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#id8">调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment.html#id12">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="organizing.html">组织你的项目</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id2">定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id4">组织模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id10">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id2">简单的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id3">实例文件夹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id8">基于环境变量配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#id9">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">视图和路由的高级模式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="views.html#id2">视图装饰器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#url-converters">URL 转换器(converters)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="views.html#id9">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="blueprints.html">蓝图</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html#id2">什么是蓝图？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html#id3">为什么要使用蓝图？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html#id5">你把它们放哪里？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html#id9">你如何使用它们？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html#id12">使用蓝图重构小的应用程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="blueprints.html#id18">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">模板</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#jinja">Jinja 快速入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id3">如何组织模板</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id4">继承</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id6">创建宏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id9">自定义过滤器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#id11">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">静态文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">组织你的静态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flask-assets">使用 Flask-Assets 管理静态资源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="storing.html">存储数据</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="storing.html#sqlalchemy">SQLAlchemy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storing.html#id5">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">处理表单</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#flask-wtf">Flask-WTF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forms.html#id9">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">处理用户的模式</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id2">确认电子邮箱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id3">存储密码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id5">认证</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id7">忘记密码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#id8">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment.html">部署</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#id2">主机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#id3">部署方式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html#id7">摘要</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">结尾</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Explore Flask</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>静态文件</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/static.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="id1">
+<h1>静态文件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<img alt="Static files" src="_images/static.png" />
+<p>顾名思义，静态文件就是那些不会改变的文件。在一般的应用程序中，静态文件包括 CSS 文件，JavaScript 文件以及图片。它们也可能是音频文件以及其它类似的东西。</p>
+<div class="section" id="id2">
+<h2>组织你的静态文件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>我们将会在我们的应用程序包里为我们的静态文件创建一个叫做 <em>static</em> 的目录。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>myapp/
+    __init__.py
+    static/
+    templates/
+    views/
+    models.py
+run.py
+</pre></div>
+</td></tr></table></div>
+<p>在 <em>static/</em> 中如何组织你的文件是取决于个人喜好。就我个人而言，我会对第三方的库（比如，jQuery， Bootstrap等等）混在我们自己的 JavaScript 和 CSS 文件里感到困扰。为了避免这个，我建议把第三方库分离到相应目录里一个 <em>lib/</em> 文件夹。一些项目使用 <em>vendor/</em> 来代替 <em>lib/</em>。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre>static/
+    css/
+        lib/
+            bootstrap.css
+        style.css
+        home.css
+        admin.css
+    js/
+        lib/
+            jquery.js
+        home.js
+        admin.js
+    img/
+        logo.svg
+        favicon.ico
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="favicon">
+<h3>添加一个 favicon<a class="headerlink" href="#favicon" title="Permalink to this headline">¶</a></h3>
+<p>在我们静态目录的文件是可以通过 <em>example.com/static/</em> 访问的。默认情况下，网页浏览器以及其它软件期望我们的 favicon 是在 <em>example.com/favicon.ico</em>。为了解决这个矛盾，我们在网站模板中的 <code class="docutils literal"><span class="pre">&lt;head&gt;</span></code> 部分添加如下的内容。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre>&lt;link rel=&quot;shortcut icon&quot;
+    href=&quot;{{ url_for(&#39;static&#39;, filename=&#39;img/favicon.ico&#39;) }}&quot;&gt;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="flask-assets">
+<h2>使用 Flask-Assets 管理静态资源<a class="headerlink" href="#flask-assets" title="Permalink to this headline">¶</a></h2>
+<p>Flask-Assets 是一个用来管理你的静态文件的扩展。Flask-Assets 提供了两个非常有用的工具。首先，它可以让你们在你的 Python 代码中定义资源的 <strong>束/包（bundles）</strong>，这些束/包（bundles）能够被一起插入到你的模板。其次，它可以让你们 <strong>预处理（pre-process）</strong> 这些文件。这就意味着你能够合并和压缩你的 CSS 和 JavaScript 文件，使得用户仅仅只需要加载两个压缩的文件（CSS 和 JavaScript），而不需要迫使你开发一个复杂的资源管道。你甚至可以编译来自 Sass, LESS, CoffeeScript 以及一堆其它来源的文件。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre>static/
+    css/
+        lib/
+            reset.css
+        common.css
+        home.css
+        admin.css
+    js/
+        lib/
+            jquery-1.10.2.js
+            Chart.js
+        home.js
+        admin.js
+    img/
+        logo.svg
+        favicon.ico
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="bundles">
+<h3>定义束/包（bundles）<a class="headerlink" href="#bundles" title="Permalink to this headline">¶</a></h3>
+<p>我们的应用程序有两个部分：公共站点和管理面板，在我们的应用程序中分别称为 &#8220;home&#8221; 和 &#8220;admin&#8221;。我们将定义四个束/包（bundles）：为每一部分定义一个 JavaScript 和 CSS 束/包。我们将把它们放在我们的 <code class="docutils literal"><span class="pre">util</span></code> 包里的一个 assets 模块里。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre># myapp/util/assets.py
+
+from flask.ext.assets import Bundle, Environment
+from .. import app
+
+bundles = {
+
+    &#39;home_js&#39;: Bundle(
+        &#39;js/lib/jquery-1.10.2.js&#39;,
+        &#39;js/home.js&#39;,
+        output=&#39;gen/home.js),
+
+    &#39;home_css&#39;: Bundle(
+        &#39;css/lib/reset.css&#39;,
+        &#39;css/common.css&#39;,
+        &#39;css/home.css&#39;,
+        output=&#39;gen/home.css),
+
+    &#39;admin_js&#39;: Bundle(
+        &#39;js/lib/jquery-1.10.2.js&#39;,
+        &#39;js/lib/Chart.js&#39;,
+        &#39;js/admin.js&#39;,
+        output=&#39;gen/admin.js),
+
+    &#39;admin_css&#39;: Bundle(
+        &#39;css/lib/reset.css&#39;,
+        &#39;css/common.css&#39;,
+        &#39;css/admin.css&#39;,
+        output=&#39;gen/admin.css)
+}
+
+assets = Environment(app)
+
+assets.register(bundles)
+</pre></div>
+</td></tr></table></div>
+<p>Flask-Assets 按照它们被列出的次序来合并你的文件。如果 <em>admin.js</em> 需要 <em>jquery-1.10.2.js</em> 的话，确保 jquery 列在最前面。</p>
+<p>为了更容易注册，我们定义束/包在一个目录里。Flask-Assets 内部使用的 webassets 包让我们可以用多种方式来注册束/包（bundles），包括像我们在上面代码段中传入一个字典。<a class="footnote-reference" href="#id8" id="id3">[1]</a></p>
+<p>因为我们在 <code class="docutils literal"><span class="pre">util.assets</span></code> 中注册了我们的束/包（bundles），所有我们必须要做的就是在我们的应用程序初始化后在 <em>__init__.py</em> 中导入 <code class="docutils literal"><span class="pre">assets</span></code>。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># myapp/__init__.py</span>
+
+<span class="c"># [...] Initialize the app</span>
+
+<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">assets</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id4">
+<h3>使用我们的束/包（bundles）<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>要使用我们的 “admin” 束/包（bundles），我们需要在 “admin” 部分的父模板：<em>admin/layout.html</em> 中插入它们。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>templates/
+    home/
+        layout.html
+        index.html
+        about.html
+    admin/
+        layout.html
+        dash.html
+        stats.html
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre>{# myapp/templates/admin/layout.html #}
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        {% assets &quot;admin_js&quot; %}
+            &lt;script type=&quot;text/javascript&quot; src=&quot;{{ ASSET_URL }}&quot;&gt;&lt;/script&gt;
+        {% endassets %}
+        {% assets &quot;admin_css&quot; %}
+            &lt;link rel=&quot;stylesheet&quot; href=&quot;{{ ASSET_URL }}&quot; /&gt;
+        {% endassets %}
+    &lt;/head&gt;
+    &lt;body&gt;
+    {% block body %}
+    {% endblock %}
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</td></tr></table></div>
+<p>我们可以按照上面的方式在 “home” 部分的 <em>templates/home/layout.html</em> 中插入 “home” 束/包（bundles）。</p>
+</div>
+<div class="section" id="id5">
+<h3>使用过滤器<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>我们可以使用过滤器来预处理（pre-process）我们的静态文件。这是特别地方便用于压缩我们的 JavaScript 和 CSS 束/包（bundles）。</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># myapp/util/assets.py</span>
+
+<span class="c"># [...]</span>
+
+<span class="n">bundles</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="s">&#39;home_js&#39;</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">(</span>
+        <span class="s">&#39;lib/jquery-1.10.2.js&#39;</span><span class="p">,</span>
+        <span class="s">&#39;js/home.js&#39;</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="s">&#39;gen/home.js&#39;</span><span class="p">,</span>
+        <span class="n">filters</span><span class="o">=</span><span class="s">&#39;jsmin&#39;</span><span class="p">),</span>
+
+    <span class="s">&#39;home_css&#39;</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">(</span>
+        <span class="s">&#39;lib/reset.css&#39;</span><span class="p">,</span>
+        <span class="s">&#39;css/common.css&#39;</span><span class="p">,</span>
+        <span class="s">&#39;css/home.css&#39;</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="s">&#39;gen/home.css&#39;</span><span class="p">,</span>
+        <span class="n">filters</span><span class="o">=</span><span class="s">&#39;cssmin&#39;</span><span class="p">),</span>
+
+    <span class="s">&#39;admin_js&#39;</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">(</span>
+        <span class="s">&#39;lib/jquery-1.10.2.js&#39;</span><span class="p">,</span>
+        <span class="s">&#39;lib/Chart.js&#39;</span><span class="p">,</span>
+        <span class="s">&#39;js/admin.js&#39;</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="s">&#39;gen/admin.js&#39;</span><span class="p">,</span>
+        <span class="n">filters</span><span class="o">=</span><span class="s">&#39;jsmin&#39;</span><span class="p">),</span>
+
+    <span class="s">&#39;admin_css&#39;</span><span class="p">:</span> <span class="n">Bundle</span><span class="p">(</span>
+        <span class="s">&#39;lib/reset.css&#39;</span><span class="p">,</span>
+        <span class="s">&#39;css/common.css&#39;</span><span class="p">,</span>
+        <span class="s">&#39;css/admin.css&#39;</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="s">&#39;gen/admin.css&#39;</span><span class="p">,</span>
+        <span class="n">filters</span><span class="o">=</span><span class="s">&#39;cssmin&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c"># [...]</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">要使用 <code class="docutils literal"><span class="pre">jsmin</span></code> 和 <code class="docutils literal"><span class="pre">cssmin</span></code> 过滤器，你需要安装 <code class="docutils literal"><span class="pre">jsmin</span></code> 和 <code class="docutils literal"><span class="pre">cssmin</span></code> 包（例如，使用 <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jsmin</span> <span class="pre">cssmin</span></code>）。确保也在 <em>requirements.txt</em> 中添加它们。</p>
+</div>
+<p>Flask-Assets 在模板第一次被渲染的时候会合并和压缩我们的文件，并且在其中一个源文件发生变化的时候会自动地更新压缩文件。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">如果在你的配置中设置 <cite>ASSETS_DEBUG = True</cite>，Flask-Assets 将会输出每一个源文件而不是合并它们。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">看看我们在 Flask-Assets 中可以使用的一些 <a class="reference external" href="http://elsdoerfer.name/docs/webassets/builtin_filters.html#js-css-compilers">其它的过滤器</a>。</p>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>摘要<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>静态文件在 <em>static/</em> 目录里。</li>
+<li>从你们自己的静态文件中分离出第三方库。</li>
+<li>在模板中指定你的 favicon 位置。</li>
+<li>使用 Flask-Assets 在你的模板中插入静态文件。</li>
+<li>Flask-Assets 可以编译，合并和压缩你的静态文件。</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>我们可以在 <a class="reference external" href="https://github.com/miracle2k/webassets/blob/0.8/src/webassets/env.py#L380">源码</a> 中看看如何进行捆绑注册。</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="storing.html" class="btn btn-neutral float-right" title="存储数据"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="templates.html" class="btn btn-neutral" title="模板"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Robert Picard.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50579609-1', 'exploreflask.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>

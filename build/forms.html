@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -187,7 +187,7 @@
 <p>表单是让用户与我们的网页应用程序交互的基本元素。Flask 本身并不会帮助我们处理表单，但是 Flask-WTF 扩展让我们在我们的 Flask 应用程序中使用流行的 WTForms 包。这个包使得定义表单和处理提交容易一些。</p>
 <div class="section" id="flask-wtf">
 <h2>Flask-WTF<a class="headerlink" href="#flask-wtf" title="Permalink to this headline">¶</a></h2>
-<p>我们想要使用 Flask-WTF 做的第一件事情（在安装它以后）就是在 <code class="docutils literal"><span class="pre">myapp.forms</span></code> 包中定义一个表单。</p>
+<p>我们想要使用 Flask-WTF 做的第一件事情（在安装它以后）就是在 <tt class="docutils literal"><span class="pre">myapp.forms</span></tt> 包中定义一个表单。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -209,15 +209,15 @@
 </td></tr></table></div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>在 Flask-WTF 版本 0.9 以前，Flask-WTF 提供了针对 WTForms 字段以及验证器的自己的封装。你可能看到外面一大堆的代码是从 <code class="docutils literal"><span class="pre">flask.ext.wtforms</span></code> 中不是从 <code class="docutils literal"><span class="pre">wtforms</span></code> 中导入 <code class="docutils literal"><span class="pre">TextField</span></code>，<code class="docutils literal"><span class="pre">PasswordField</span></code>。</p>
-<p class="last">在 Flask-WTF 版本 0.9 以后，我们应该直接从 <code class="docutils literal"><span class="pre">wtforms</span></code> 中导入这些字段和验证器。</p>
+<p>在 Flask-WTF 版本 0.9 以前，Flask-WTF 提供了针对 WTForms 字段以及验证器的自己的封装。你可能看到外面一大堆的代码是从 <tt class="docutils literal"><span class="pre">flask.ext.wtforms</span></tt> 中不是从 <tt class="docutils literal"><span class="pre">wtforms</span></tt> 中导入 <tt class="docutils literal"><span class="pre">TextField</span></tt>，<tt class="docutils literal"><span class="pre">PasswordField</span></tt>。</p>
+<p class="last">在 Flask-WTF 版本 0.9 以后，我们应该直接从 <tt class="docutils literal"><span class="pre">wtforms</span></tt> 中导入这些字段和验证器。</p>
 </div>
-<p>我们定义的表单是一个用户登录表单。我们把它叫做 <code class="docutils literal"><span class="pre">EmailPasswordForm()</span></code>，我们可以重用这个同样的表单类（<code class="docutils literal"><span class="pre">Form</span></code>）去做其它的一些事情，像注册表单。这里我们没有去定义一个又长又没有用的表单，而是选择一个很常用的表单，只是为了给你们介绍使用 Flask-WTF 定义表单的方式。也许以后在正式项目中会定义一个特别复杂表单。对于表单中包含字段名称，我们建议使用一个清楚的名称，并且在一个表单中保持唯一。不得不说，对于一个长的表单，我们可能要给出一个更符合上文的字段名称。</p>
+<p>我们定义的表单是一个用户登录表单。我们把它叫做 <tt class="docutils literal"><span class="pre">EmailPasswordForm()</span></tt>，我们可以重用这个同样的表单类（<tt class="docutils literal"><span class="pre">Form</span></tt>）去做其它的一些事情，像注册表单。这里我们没有去定义一个又长又没有用的表单，而是选择一个很常用的表单，只是为了给你们介绍使用 Flask-WTF 定义表单的方式。也许以后在正式项目中会定义一个特别复杂表单。对于表单中包含字段名称，我们建议使用一个清楚的名称，并且在一个表单中保持唯一。不得不说，对于一个长的表单，我们可能要给出一个更符合上文的字段名称。</p>
 <p>登录表单可以替我们做一些事情。它能够保证我们应用程序的安全以防止 CSRF 漏洞，验证用户输入并且渲染适当的标记，这些标记是我们为表单定义的字段。</p>
 <div class="section" id="csrf">
 <h3>CSRF 保护和验证<a class="headerlink" href="#csrf" title="Permalink to this headline">¶</a></h3>
 <p>CSRF 表示跨站请求伪造。CSRF 攻击是指第三方伪造（像一个表单提交）请求到一个应用程序的服务器。一个易受攻击的服务器假设从一个表单来的数据是来自它自己的网站并且采取相应的操作。</p>
-<p>作为一个例子，比方说，一个邮件提供商可以让你通过提交一个表单来删除你的账号。表单发送一个 POST 请求到服务器上的 <code class="docutils literal"><span class="pre">account_delete</span></code> 端点并且当表单被提交的时候删除登录的账号。我们可以在自己的网站上创建一个表单，该表单发送一个 POST 请求到同一个 <cite>account_delete`</cite> 端点。现在，如果我们让某人点击我们表单的提交按钮（或者通过 JavaScript 来这样做），邮件提供商提供的登录账号就会被删除掉。当然邮件提供商还不知道表单提交并不是发生在他们的网站上。</p>
+<p>作为一个例子，比方说，一个邮件提供商可以让你通过提交一个表单来删除你的账号。表单发送一个 POST 请求到服务器上的 <tt class="docutils literal"><span class="pre">account_delete</span></tt> 端点并且当表单被提交的时候删除登录的账号。我们可以在自己的网站上创建一个表单，该表单发送一个 POST 请求到同一个 <cite>account_delete`</cite> 端点。现在，如果我们让某人点击我们表单的提交按钮（或者通过 JavaScript 来这样做），邮件提供商提供的登录账号就会被删除掉。当然邮件提供商还不知道表单提交并不是发生在他们的网站上。</p>
 <p>因此如何才能阻止 POST 请求来自别的网站？WTForms 通过在渲染每一个表单的时候生成一个唯一的令牌使得成为可能。生成的令牌会被传回到服务器，伴随着 POST 请求的数据，在表单被接受之前令牌必须接受服务器的验证。关键的是令牌是与存储在用户会话（cookies）的一个值有关并且会在一段时间后回去（默认是 30 分钟）。这种方式就能够保证提交一个有效表单的人就是加载页面的人（或者至少是使用同一电脑的人），而且他们只能在加载页面 30 分钟内这样做。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -262,7 +262,7 @@
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;login.html&#39;</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>我们从 <code class="docutils literal"><span class="pre">forms</span></code> 包中导入我们的表单并且在视图中实例化它。接着我们运行 <code class="docutils literal"><span class="pre">form.validate_on_submit()</span></code>。如果表单被提交（例如，如果 HTTP 方法是 PUT 或者 POST）并且通过我们定义在 <em>forms.py</em> 中的验证器验证过，这个函数（<code class="docutils literal"><span class="pre">form.validate_on_submit()</span></code>）将会返回 <code class="docutils literal"><span class="pre">True</span></code>。</p>
+<p>我们从 <tt class="docutils literal"><span class="pre">forms</span></tt> 包中导入我们的表单并且在视图中实例化它。接着我们运行 <tt class="docutils literal"><span class="pre">form.validate_on_submit()</span></tt>。如果表单被提交（例如，如果 HTTP 方法是 PUT 或者 POST）并且通过我们定义在 <em>forms.py</em> 中的验证器验证过，这个函数（<tt class="docutils literal"><span class="pre">form.validate_on_submit()</span></tt>）将会返回 <tt class="docutils literal"><span class="pre">True</span></tt>。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
@@ -302,7 +302,7 @@
 &lt;/html&gt;
 </pre></div>
 </td></tr></table></div>
-<p><code class="docutils literal"><span class="pre">{{</span> <span class="pre">form.csrf_token</span> <span class="pre">}}</span></code> 渲染了一个隐藏的字段，该字段包含那些奇特的 CSRF 令牌，并且当 WTForms 验证表单的时候会寻找这个字段。我们不用担心包含处理令牌的逻辑，WTForms 会主动帮我们去做。好哇！</p>
+<p><tt class="docutils literal"><span class="pre">{{</span> <span class="pre">form.csrf_token</span> <span class="pre">}}</span></tt> 渲染了一个隐藏的字段，该字段包含那些奇特的 CSRF 令牌，并且当 WTForms 验证表单的时候会寻找这个字段。我们不用担心包含处理令牌的逻辑，WTForms 会主动帮我们去做。好哇！</p>
 <div class="section" id="csrf-ajax">
 <h4>使用 CSRF 令牌保护 AJAX 调用<a class="headerlink" href="#csrf-ajax" title="Permalink to this headline">¶</a></h4>
 <p>Flask-WTF CSRF 令牌不限于保护表单提交。如果你的应用程序要处理其它可能会被伪造的请求（特别是 AJAX 调用），你也可以在那里添加 CSRF 保护！</p>
@@ -314,7 +314,7 @@
 </div>
 <div class="section" id="id4">
 <h3>自定义验证<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>除了由 WTForms 提供的内置的表单验证器（例如，<code class="docutils literal"><span class="pre">Required()</span></code>，<code class="docutils literal"><span class="pre">Email()</span></code> 等等），我们能创建我们自己的验证器。我们将通过编写一个 <code class="docutils literal"><span class="pre">Unique()</span></code> 验证器来说明创建自己的验证器，<code class="docutils literal"><span class="pre">Unique()</span></code> 验证器是用来检查数据库并且确保用户提供的值在数据库中不存在。这能够用于确保用户名或者邮箱地址还没有使用。没有 WTForms 的话，我们可能要在视图中做这些事情，但是现在我们可以在表单本身做些事情。</p>
+<p>除了由 WTForms 提供的内置的表单验证器（例如，<tt class="docutils literal"><span class="pre">Required()</span></tt>，<tt class="docutils literal"><span class="pre">Email()</span></tt> 等等），我们能创建我们自己的验证器。我们将通过编写一个 <tt class="docutils literal"><span class="pre">Unique()</span></tt> 验证器来说明创建自己的验证器，<tt class="docutils literal"><span class="pre">Unique()</span></tt> 验证器是用来检查数据库并且确保用户提供的值在数据库中不存在。这能够用于确保用户名或者邮箱地址还没有使用。没有 WTForms 的话，我们可能要在视图中做这些事情，但是现在我们可以在表单本身做些事情。</p>
 <p>现在我们来定义一个简单的注册表单，其实这个表单和登录的表单几乎一样。只是会在后面给它添加一些自定义的验证器。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -335,7 +335,7 @@
     <span class="n">password</span> <span class="o">=</span> <span class="n">PasswordField</span><span class="p">(</span><span class="s">&#39;Password&#39;</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">()])</span>
 </pre></div>
 </td></tr></table></div>
-<p>现在我们要添加我们的验证器用来确保它们提供的邮箱不存在数据库中。我们把这个验证器放在一个新的 <code class="docutils literal"><span class="pre">util</span></code> 模块，<code class="docutils literal"><span class="pre">util.validators</span></code>。</p>
+<p>现在我们要添加我们的验证器用来确保它们提供的邮箱不存在数据库中。我们把这个验证器放在一个新的 <tt class="docutils literal"><span class="pre">util</span></tt> 模块，<tt class="docutils literal"><span class="pre">util.validators</span></tt>。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -362,8 +362,8 @@
 </pre></div>
 </td></tr></table></div>
 <p>这个验证器假设我们是使用 SQLAlchemy 来定义我们的模型。WTForms 期待验证器返回某种可调用的对象（例如，一个可调用的类）。</p>
-<p>在 <code class="docutils literal"><span class="pre">Unique()</span></code> 的 <code class="docutils literal"><span class="pre">__init__</span></code> 中我们可以指定哪些参数传入到验证器中，在本例中我们要传入相关的模型（例如，在我们的情况中式传入 <code class="docutils literal"><span class="pre">User</span></code> 模型）以及要检查的字段。当验证器被调用的时候，如果定义模型的任何实例匹配表单中提交的值，它将会抛出一个 <code class="docutils literal"><span class="pre">ValidationError</span></code>。我们也可以添加一个具有通用默认值的消息，它将会被包含在 <code class="docutils literal"><span class="pre">ValidationError</span></code> 中。</p>
-<p>现在我们可以修改 <code class="docutils literal"><span class="pre">EmailPasswordForm</span></code>，使用我们自定义的 <code class="docutils literal"><span class="pre">Unique</span></code> 验证器。</p>
+<p>在 <tt class="docutils literal"><span class="pre">Unique()</span></tt> 的 <tt class="docutils literal"><span class="pre">__init__</span></tt> 中我们可以指定哪些参数传入到验证器中，在本例中我们要传入相关的模型（例如，在我们的情况中式传入 <tt class="docutils literal"><span class="pre">User</span></tt> 模型）以及要检查的字段。当验证器被调用的时候，如果定义模型的任何实例匹配表单中提交的值，它将会抛出一个 <tt class="docutils literal"><span class="pre">ValidationError</span></tt>。我们也可以添加一个具有通用默认值的消息，它将会被包含在 <tt class="docutils literal"><span class="pre">ValidationError</span></tt> 中。</p>
+<p>现在我们可以修改 <tt class="docutils literal"><span class="pre">EmailPasswordForm</span></tt>，使用我们自定义的 <tt class="docutils literal"><span class="pre">Unique</span></tt> 验证器。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -404,7 +404,7 @@
 </div>
 <div class="section" id="id6">
 <h3>渲染表单<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>WTForms 也能帮助我们为表单渲染成 HTML 表示。WTForms 实现的 <code class="docutils literal"><span class="pre">Field</span></code> 字段能够渲染成该字段的 HTML 表示，所以为了渲染它们，我们只必须在我们模板中调用表单的字段。这就像渲染 <code class="docutils literal"><span class="pre">csrf_token</span></code> 字段。下面给出了一个登录模板的示例，在里面我们使用 WTForms 来渲染我们的字段。</p>
+<p>WTForms 也能帮助我们为表单渲染成 HTML 表示。WTForms 实现的 <tt class="docutils literal"><span class="pre">Field</span></tt> 字段能够渲染成该字段的 HTML 表示，所以为了渲染它们，我们只必须在我们模板中调用表单的字段。这就像渲染 <tt class="docutils literal"><span class="pre">csrf_token</span></tt> 字段。下面给出了一个登录模板的示例，在里面我们使用 WTForms 来渲染我们的字段。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -454,7 +454,7 @@
 </td></tr></table></div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">如果我们想要传入 “class” HTML 属性，我们必须使用 <code class="docutils literal"><span class="pre">class_=''</span></code> 因为 “class” 是 Python 中的保留关键字。</p>
+<p class="last">如果我们想要传入 “class” HTML 属性，我们必须使用 <tt class="docutils literal"><span class="pre">class_=''</span></tt> 因为 “class” 是 Python 中的保留关键字。</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -462,7 +462,7 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>你可能注意到我们没有必须要使用 Jinja 的 <code class="docutils literal"><span class="pre">|safe</span></code> 过滤器。这是因为 WTForms 渲染 HTML 安全字符串。</p>
+<p>你可能注意到我们没有必须要使用 Jinja 的 <tt class="docutils literal"><span class="pre">|safe</span></tt> 过滤器。这是因为 WTForms 渲染 HTML 安全字符串。</p>
 <p class="last">更多的内容请参阅 <a class="reference external" href="https://flask-wtf.readthedocs.org/en/v0.8.4/#using-the-safe-filter">官方文档</a>。</p>
 </div>
 </div>

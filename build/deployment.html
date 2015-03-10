@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -196,7 +196,7 @@
 <div class="section" id="heroku">
 <h3>Heroku<a class="headerlink" href="#heroku" title="Permalink to this headline">¶</a></h3>
 <p>Heroku 是一个建立在亚马逊网络服务（AWS）之上的应用程序托管服务，像亚马逊弹性计算云（EC2）一样。它们让我们充分利用亚马逊弹性计算云（EC2）的便利性而且不需要系统管理的经验。</p>
-<p>在 Heroku 中，我们使用 <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></code> 部署我们的应用程序到它们的服务器上。这真的是很便利，我们不需要花费我们的时间在 SSHing 到一个服务器上，安装以及配置软件并且想出一个合理的部署过程。</p>
+<p>在 Heroku 中，我们使用 <tt class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></tt> 部署我们的应用程序到它们的服务器上。这真的是很便利，我们不需要花费我们的时间在 SSHing 到一个服务器上，安装以及配置软件并且想出一个合理的部署过程。</p>
 <p>这种便利性带来的就是价格问题，尽管亚马逊网络服务（AWS）和 Heroku 提供了一定的免费服务。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -228,7 +228,7 @@
 <div class="section" id="id4">
 <h3>应用程序运行器<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>当我们开发我们的应用程序的时候，我们用来本地运行 Flask 的服务器不擅长处理真实的请求。当我们实际上需要把我们的应用程序面向公众的话，我们要使用一个应用程序运行器来运行它，像 Gunicorn 一样。Gunicorn 可以像线程一样处理请求和处理一些复杂的事情。</p>
-<p>要使用 Gunicorn，我们要用 Pip 在我们的虚拟环境中安装 <code class="docutils literal"><span class="pre">gunicorn</span></code> 包。运行我们的应用程序是一个简单的命令行。</p>
+<p>要使用 Gunicorn，我们要用 Pip 在我们的虚拟环境中安装 <tt class="docutils literal"><span class="pre">gunicorn</span></tt> 包。运行我们的应用程序是一个简单的命令行。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -248,7 +248,7 @@
         <span class="k">return</span> <span class="s">&quot;Hello World!&quot;</span>
 </pre></div>
 </td></tr></table></div>
-<p>一个简单的应用程序已经完成。现在，为了用 Gunicorn 来服务于它，我们简单地运行 <code class="docutils literal"><span class="pre">gunicorn</span></code> 命令行。</p>
+<p>一个简单的应用程序已经完成。现在，为了用 Gunicorn 来服务于它，我们简单地运行 <tt class="docutils literal"><span class="pre">gunicorn</span></tt> 命令行。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -261,8 +261,8 @@
 </pre></div>
 </td></tr></table></div>
 <p>这时候，当我们的浏览器访问 <em>http://127.0.0.1:8000</em> 的时候，我们应该看到 &#8220;Hello World!&#8221;。</p>
-<p>为了在后台运行这个服务器（即：作为一个守护进程），我们可以给 Gunicorn 传入 <code class="docutils literal"><span class="pre">-D</span></code> 参数。在这种方式下，即使我们关闭当前的终端会话，它依然运行。</p>
-<p>如果我们把 Gunicorn 作为一个守护进程的话，我们可能会很难找到进程当后面我们要停止服务器的时候。我们能够告诉 Gunicorn 把进程 ID 放入到一个文件中以便后面我们能够停止或者重启它，而无需搜索整个运行进行的列表。我们使用 <code class="docutils literal"><span class="pre">-p</span> <span class="pre">&lt;file&gt;</span></code> 选项来做到这一点。</p>
+<p>为了在后台运行这个服务器（即：作为一个守护进程），我们可以给 Gunicorn 传入 <tt class="docutils literal"><span class="pre">-D</span></tt> 参数。在这种方式下，即使我们关闭当前的终端会话，它依然运行。</p>
+<p>如果我们把 Gunicorn 作为一个守护进程的话，我们可能会很难找到进程当后面我们要停止服务器的时候。我们能够告诉 Gunicorn 把进程 ID 放入到一个文件中以便后面我们能够停止或者重启它，而无需搜索整个运行进行的列表。我们使用 <tt class="docutils literal"><span class="pre">-p</span> <span class="pre">&lt;file&gt;</span></tt> 选项来做到这一点。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre>(ourapp)$ gunicorn rocket:app -p rocket.pid -D
@@ -270,13 +270,13 @@
 63101
 </pre></div>
 </td></tr></table></div>
-<p>要重启以及杀死服务器，我们可以分别运行 <code class="docutils literal"><span class="pre">kill</span> <span class="pre">-HUP</span></code> 和 <code class="docutils literal"><span class="pre">kill</span></code>。</p>
+<p>要重启以及杀死服务器，我们可以分别运行 <tt class="docutils literal"><span class="pre">kill</span> <span class="pre">-HUP</span></tt> 和 <tt class="docutils literal"><span class="pre">kill</span></tt>。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre>(ourapp)$ kill -HUP `cat rocket.pid`
 (ourapp)$ kill `cat rocket.pid`
 </pre></div>
 </td></tr></table></div>
-<p>默认情况下，Gunicorn 运行在端口 8000。我们可以通过添加 <code class="docutils literal"><span class="pre">-b</span></code> 绑定选项来更改端口。</p>
+<p>默认情况下，Gunicorn 运行在端口 8000。我们可以通过添加 <tt class="docutils literal"><span class="pre">-b</span></tt> 绑定选项来更改端口。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>(ourapp)$ gunicorn rocket:app -p rocket.pid -b 127.0.0.1:7999 -D
 </pre></div>
 </td></tr></table></div>

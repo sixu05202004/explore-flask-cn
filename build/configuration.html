@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -81,8 +81,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="organizing.html">组织你的项目</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="organizing.html#id2">定义</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#id4">组织模式</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organizing.html#id10">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id5">组织模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="organizing.html#id9">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">配置</a><ul>
@@ -188,7 +188,7 @@
 <div class="section" id="id2">
 <h2>简单的例子<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>一个简单的应用程序可能不会需要任何这些复杂的功能。你可能只需要把 <em>config.py</em> 放在你的仓库/版本库的根目录并且在 <em>app.py</em> 或者 <em>yourapp/__init__.py</em> 中加载它。</p>
-<p><em>config.py</em> 文件应该每行包含一个变量赋值。当你的应用初始化的时候，在 <em>config.py</em> 中的变量用于配置 Flask 和它的扩展并且它们能够通过 <code class="docutils literal"><span class="pre">app.config</span></code> 字典访问到 &#8211; 例如，<code class="docutils literal"><span class="pre">app.config[&quot;DEBUG&quot;]</span></code>。</p>
+<p><em>config.py</em> 文件中应该每行包含一个配置变量赋值。当你的应用程序初始化的时候，在 <em>config.py</em> 中的配置变量用于配置 Flask 和它的扩展并且它们能够通过 <tt class="docutils literal"><span class="pre">app.config</span></tt> 字典访问到 &#8211; 例如，<tt class="docutils literal"><span class="pre">app.config[&quot;DEBUG&quot;]</span></tt>。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">True</span> <span class="c"># Turns on debugging features in Flask</span>
@@ -196,7 +196,7 @@
 <span class="n">MAIL_FROM_EMAIL</span> <span class="o">=</span> <span class="s">&quot;robert@example.com&quot;</span> <span class="c"># For use in application emails</span>
 </pre></div>
 </td></tr></table></div>
-<p>配置的变量可以被 Flask，它的扩展或者你来使用。这个例子中， 每当我们在一封事务性邮件中需要默认的 “发件人” 的时候，我们可以使用 <code class="docutils literal"><span class="pre">app.config[&quot;MAIL_FROM_EMAIL&quot;]</span></code> &#8211; 例如，密码重置。把这些信息放置于一个配置变量中使得以后能够容易地修改它。</p>
+<p>配置的变量可以被 Flask，它的扩展或者你来使用。这个例子中， 每当我们在一封事务性邮件中需要默认的 “发件人” 的时候，我们可以使用 <tt class="docutils literal"><span class="pre">app.config[&quot;MAIL_FROM_EMAIL&quot;]</span></tt> &#8211; 例如，密码重置。把这些信息放置于一个配置变量中使得以后能够容易地修改它。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -229,8 +229,8 @@
 <td>为你提供了调试错误的一些方便的工具。
 这包括一个基于 Web 的堆栈跟踪和交互式的
 Python 控制台。</td>
-<td>开发环境中设置成 <code class="docutils literal"><span class="pre">True</span></code>；
-生产环境中设置成 <code class="docutils literal"><span class="pre">False</span></code>。</td>
+<td>开发环境中设置成 <tt class="docutils literal"><span class="pre">True</span></tt>；
+生产环境中设置成 <tt class="docutils literal"><span class="pre">False</span></tt>。</td>
 </tr>
 <tr class="row-odd"><td>SECRET_KEY</td>
 <td>这是 Flask 用来为 cookies 签名的密钥。
@@ -253,12 +253,12 @@ Python 控制台。</td>
 </table>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">确保在生产环境中 <code class="docutils literal"><span class="pre">DEBUG</span></code> 设置成 <code class="docutils literal"><span class="pre">False</span></code>。如果保留 <code class="docutils literal"><span class="pre">DEBUG</span></code> 为 <code class="docutils literal"><span class="pre">True</span></code>，它允许用户在你的服务器上执行任意的 Python。</p>
+<p class="last">确保在生产环境中 <tt class="docutils literal"><span class="pre">DEBUG</span></tt> 设置成 <tt class="docutils literal"><span class="pre">False</span></tt>。如果保留 <tt class="docutils literal"><span class="pre">DEBUG</span></tt> 为 <tt class="docutils literal"><span class="pre">True</span></tt>，它允许用户在你的服务器上执行任意的 Python。</p>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>实例文件夹<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>有时候你需要定义包含敏感信息的配置变量。我们想要从 <em>config.py</em> 中分离这些变量并且让它们保留在仓库/版本库之外。你可能会隐藏像数据库密码以及 API 密钥的一些机密信息，或者定义于特定于指定机器的变量。为让这个更容易些的话，Flask 提供了一个叫做 <strong>instance folders</strong> 的功能。实例文件夹是仓库/版本库下的一个子目录并且包含专门为这个应用程序的实例的一个配置文件。我们不希望它提交到版本控制。</p>
+<p>有时候你需要定义包含敏感信息的配置变量。我们想要从 <em>config.py</em> 中分离这些变量并且让它们保留在仓库/版本库之外。你可能会隐藏像数据库密码以及 API 密钥的一些敏感信息，或者定义于特定于指定机器的配置变量。为让实现这些要求更加容易些，Flask 提供了一个叫做 <strong>instance folders</strong> 的功能。实例文件夹是仓库/版本库下的一个子目录并且包含专门为这个应用程序的实例的一个配置文件。我们不希望它提交到版本控制。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -284,7 +284,7 @@ yourapp/
 </td></tr></table></div>
 <div class="section" id="id4">
 <h3>使用实例文件夹<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>我们使用 <code class="docutils literal"><span class="pre">app.config.from_pyfile()</span></code> 来从一个实例文件夹中加载配置变量。当我们用 <code class="docutils literal"><span class="pre">Flask()</span></code> 调用创建我们的应用的时候，如果我们设置了 <code class="docutils literal"><span class="pre">instance_relative_config=True</span></code>，<code class="docutils literal"><span class="pre">app.config.from_pyfile()</span></code> 将会从 <em>instance/</em> 目录加载指定文件。</p>
+<p>我们使用 <tt class="docutils literal"><span class="pre">app.config.from_pyfile()</span></tt> 来从一个实例文件夹中加载配置变量。当我们调用 <tt class="docutils literal"><span class="pre">Flask()</span></tt> 来创建我们的应用的时候，如果我们设置了 <tt class="docutils literal"><span class="pre">instance_relative_config=True</span></tt>，<tt class="docutils literal"><span class="pre">app.config.from_pyfile()</span></tt> 将会从 <em>instance/</em> 目录加载指定文件。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -296,7 +296,7 @@ yourapp/
 <span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_pyfile</span><span class="p">(</span><span class="s">&#39;config.py&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>现在我们可以像在 <em>config.py</em> 中那样在 <em>instance/config.py</em> 中定义变量。你也应该把你的实例文件夹加入到版本控制系统的忽略列表中。要使用 Git 做到这一点的话，你需要在 <em>.gitignore</em> 中添加 <code class="docutils literal"><span class="pre">instance/</span></code> 在新的一行中。</p>
+<p>现在我们可以像在 <em>config.py</em> 中那样在 <em>instance/config.py</em> 中定义配置变量。你也应该把你的实例文件夹加入到版本控制系统的忽略列表中。要使用 Git 做到这一点的话，你需要在 <em>.gitignore</em> 新的一行中添加 <tt class="docutils literal"><span class="pre">instance/</span></tt> 。</p>
 </div>
 <div class="section" id="id5">
 <h3>密钥<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
@@ -317,7 +317,7 @@ yourapp/
 </div>
 <div class="section" id="id6">
 <h3>基于环境的配置<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>如果在你的生产环境和开发环境中的差异非常小的话，你可能想要使用实例文件夹来处理配置的变化。定义在 <em>instance/config.py</em> 文件中的变量能够覆盖 <em>config.py</em> 中的值。你只需要在 <code class="docutils literal"><span class="pre">app.config.from_object()</span></code> 后调用 <code class="docutils literal"><span class="pre">app.config.from_pyfile()</span></code>。这样用法的好处之一就是在不同的机器上修改你的应用的配置。</p>
+<p>如果在你的生产环境和开发环境中的差异非常小的话，你可能想要使用实例文件夹来处理配置的变化。定义在 <em>instance/config.py</em> 文件中的配置变量能够覆盖 <em>config.py</em> 中的值。你只需要在 <tt class="docutils literal"><span class="pre">app.config.from_object()</span></tt> 后调用 <tt class="docutils literal"><span class="pre">app.config.from_pyfile()</span></tt>。这样用法的好处之一就是在不同的机器上修改你的应用的配置。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -349,7 +349,7 @@ yourapp/
 <div class="section" id="id8">
 <h2>基于环境变量配置<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>实例文件夹不应该出现在版本控制中。这就意味着你将无法跟踪你的实例配置的变化。如果只是一、两个变量这可能不是什么问题，但是如果你在不同的环境上（生产，预升级，开发，等等）配置都有些微调话，你就不会想要存在丢失它们的风险。</p>
-<p>Flask 给我们选择配置文件的能力，它可以基于一个环境变量的值来加载不同的配置文件。这就意味着在我们的仓库/版本库里，我们可以有多个配置文件并且总会加载正确的那一个。一旦我们有多个配置文件的话，我可以把它们移入它们自己 <code class="docutils literal"><span class="pre">config</span></code> 文件夹中。</p>
+<p>Flask 给我们选择配置文件的能力，它可以基于一个环境变量的值来加载不同的配置文件。这就意味着在我们的仓库/版本库里，我们可以有多个配置文件并且总会加载正确的那一个。一旦我们有多个配置文件的话，我可以把它们移入它们自己 <tt class="docutils literal"><span class="pre">config</span></tt> 文件夹中。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -391,20 +391,20 @@ yourapp/
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>config/default.py</td>
-<td>默认的配置值，可用于所有的环境或者被个人的环境给覆写。</td>
+<td>默认的配置值，可用于所有的环境或者被个人的环境给覆盖。</td>
 </tr>
 <tr class="row-even"><td>config/development.py</td>
 <td>用于开发环境的配置值。这里你可能会指定本地数据库的 URI。</td>
 </tr>
 <tr class="row-odd"><td>config/production.py</td>
-<td>用于生产环境的配置值。在这里 <code class="docutils literal"><span class="pre">DEBUG</span></code> 一定要设置成 <code class="docutils literal"><span class="pre">False</span></code>。</td>
+<td>用于生产环境的配置值。在这里 <tt class="docutils literal"><span class="pre">DEBUG</span></tt> 一定要设置成 <tt class="docutils literal"><span class="pre">False</span></tt>。</td>
 </tr>
 <tr class="row-even"><td>config/staging.py</td>
 <td>根据开发进度，你可能会有一个模拟生产环境，这个文件主要用于这种场景。</td>
 </tr>
 </tbody>
 </table>
-<p>为了决定要加载哪个配置文件，我们会调用 <code class="docutils literal"><span class="pre">app.config.from_envvar()</span></code>。</p>
+<p>为了决定要加载哪个配置文件，我们会调用 <tt class="docutils literal"><span class="pre">app.config.from_envvar()</span></tt>。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -449,9 +449,9 @@ python run.py
 <h2>摘要<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>一个简单的应用程序可能仅仅需要一个配置文件：<em>config.py</em>。</li>
-<li>实例文件夹能够帮助我们隐藏机密的配置值。</li>
-<li>实例文件夹能够用于针对一个特定的环境改变一个应用程序的配置。</li>
-<li>我们应该在一些复杂的以及多个的环境中使用环境变量以及 <code class="docutils literal"><span class="pre">app.config.from_envvar()</span></code> 。</li>
+<li>实例文件夹能够帮助我们隐藏敏感的配置值。</li>
+<li>实例文件夹能够用于针对每个特定的环境需要改变应用程序的配置的场景。</li>
+<li>我们应该在一些复杂的以及多个的环境中使用环境变量以及 <tt class="docutils literal"><span class="pre">app.config.from_envvar()</span></tt> 。</li>
 </ul>
 </div>
 </div>

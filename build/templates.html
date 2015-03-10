@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -193,7 +193,7 @@
 <h2>Jinja 快速入门<a class="headerlink" href="#jinja" title="Permalink to this headline">¶</a></h2>
 <p>Jinja 官方文档在解释语法和语言的功能上做出很大的工作。我不会在这里重复，但是我要确保你卡不到这个重要的注意事项：</p>
 <blockquote>
-<div><p>有两种分隔符。<code class="docutils literal"><span class="pre">{%</span> <span class="pre">...</span> <span class="pre">%}</span></code> 和 <code class="docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></code>。第一个用于执行类似 for 循环或者赋值的声明，后者是用于输出表达的结果到模板中。</p>
+<div><p>有两种分隔符。<tt class="docutils literal"><span class="pre">{%</span> <span class="pre">...</span> <span class="pre">%}</span></tt> 和 <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></tt>。第一个用于执行类似 for 循环或者赋值的声明，后者是用于输出表达的结果到模板中。</p>
 <p class="attribution">&mdash;<a class="reference external" href="http://jinja.pocoo.org/docs/templates/#synopsis">Jinja 模板设计文档</a></p>
 </div></blockquote>
 </div>
@@ -248,7 +248,7 @@ requirements.txt
 <h2>继承<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>很像蝙蝠侠的背景故事一样，一个组织优秀的模板目录很大程度上依靠继承。<strong>父模板</strong> 通常定义一个通用的结构，所有 <strong>子模板</strong> 都能很好的继承它。在我们的例子中，<em>layout.html</em> 就是一个父模板而其它 <em>.html</em> 文件就是子模板。</p>
 <p>你通常有一个顶层的 <em>layout.html</em>，它定义了你的应用程序的通用布局以及你的网站的每一部分。如果你看看上面的目录的话，你会看到一个顶层的 <em>myapp/templates/layout.html</em>，同样还有 <em>myapp/templates/profile/layout.html</em> 和 <em>myapp/templates/admin/layout.html</em>。最后两个文件继承和修改第一个文件。</p>
-<p>继承是用 <code class="docutils literal"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">%}</span></code> 和 <code class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">%}</span></code> 标签实现的。在父模板中，我们能定义由子模板来填充的块。</p>
+<p>继承是用 <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">extends</span> <span class="pre">%}</span></tt> 和 <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">block</span> <span class="pre">%}</span></tt> 标签实现的。在父模板中，我们能定义由子模板来填充的块。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -294,7 +294,7 @@ requirements.txt
 {% endblock %}
 </pre></div>
 </td></tr></table></div>
-<p><code class="docutils literal"><span class="pre">super()</span></code> 函数让我们渲染父级块的内容。</p>
+<p><tt class="docutils literal"><span class="pre">super()</span></tt> 函数让我们渲染父级块的内容。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">关于继承的更多信息，请参阅 <a class="reference external" href="http://jinja.pocoo.org/docs/templates/#template-inheritance">Jinja 模板继承文档</a>。</p>
@@ -302,7 +302,7 @@ requirements.txt
 </div>
 <div class="section" id="id6">
 <h2>创建宏<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>我们可以在我们模板中坚持 DRY（不要重复自己）的原则，通过抽象出重复出现的代码片段到 <strong>宏</strong>。如果我们正工作在为我们应用程序导航的 HTML 上，我们需要给一个 “活跃的”链接一个 class（class=&#8221;active&#8221;）。没有宏的话，我们要编写一大段 <code class="docutils literal"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">else</span></code> 语句，这些语句检查每一个链接找到正处于活跃的一个。</p>
+<p>我们可以在我们模板中坚持 DRY（不要重复自己）的原则，通过抽象出重复出现的代码片段到 <strong>宏</strong>。如果我们正工作在为我们应用程序导航的 HTML 上，我们需要给一个 “活跃的”链接一个 class（class=&#8221;active&#8221;）。没有宏的话，我们要编写一大段 <tt class="docutils literal"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">else</span></tt> 语句，这些语句检查每一个链接找到正处于活跃的一个。</p>
 <p>宏提供了一种模块化代码的方式；它们像函数一样工作。让我们看看如何使用宏标记一个活跃的链接。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -345,11 +345,11 @@ requirements.txt
 &lt;/html&gt;
 </pre></div>
 </td></tr></table></div>
-<p>在这个模板中我们现在要做的就是调用一个未定义的宏 - <code class="docutils literal"><span class="pre">nav_link</span></code> -接着向其传递两个参数：目标端点（例如，目标视图的函数名）以及我们要显示的文本。</p>
+<p>在这个模板中我们现在要做的就是调用一个未定义的宏 - <tt class="docutils literal"><span class="pre">nav_link</span></tt> -接着向其传递两个参数：目标端点（例如，目标视图的函数名）以及我们要显示的文本。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>你可能会注意到在导入语句中我们指定了 <code class="docutils literal"><span class="pre">with</span> <span class="pre">context</span></code>。Jinja 的 <strong>context</strong> 是由传递到 <code class="docutils literal"><span class="pre">render_template()</span></code> 函数的参数以及来自我们的 Python 代码的 Jinja 环境上下文组成。对于模板来说，这些变量在模板被渲染的时候是可用的。</p>
-<p class="last">一些变量是明显地有我们传入，例如，<code class="docutils literal"><span class="pre">render_template(&quot;index.html&quot;,</span> <span class="pre">color=&quot;red&quot;)</span></code>，但是还有一些变量和函数是由 Flask 自动地包含在上下文中，例如，<code class="docutils literal"><span class="pre">request</span></code>, <code class="docutils literal"><span class="pre">g</span></code> 和 <code class="docutils literal"><span class="pre">session</span></code>。当我们说 <code class="docutils literal"><span class="pre">{%</span> <span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">...</span> <span class="pre">with</span> <span class="pre">context</span> <span class="pre">%}</span></code> 的时候，就是告诉 Jinja 是由的这些变量对宏也可用。</p>
+<p>你可能会注意到在导入语句中我们指定了 <tt class="docutils literal"><span class="pre">with</span> <span class="pre">context</span></tt>。Jinja 的 <strong>context</strong> 是由传递到 <tt class="docutils literal"><span class="pre">render_template()</span></tt> 函数的参数以及来自我们的 Python 代码的 Jinja 环境上下文组成。对于模板来说，这些变量在模板被渲染的时候是可用的。</p>
+<p class="last">一些变量是明显地有我们传入，例如，<tt class="docutils literal"><span class="pre">render_template(&quot;index.html&quot;,</span> <span class="pre">color=&quot;red&quot;)</span></tt>，但是还有一些变量和函数是由 Flask 自动地包含在上下文中，例如，<tt class="docutils literal"><span class="pre">request</span></tt>, <tt class="docutils literal"><span class="pre">g</span></tt> 和 <tt class="docutils literal"><span class="pre">session</span></tt>。当我们说 <tt class="docutils literal"><span class="pre">{%</span> <span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">...</span> <span class="pre">with</span> <span class="pre">context</span> <span class="pre">%}</span></tt> 的时候，就是告诉 Jinja 是由的这些变量对宏也可用。</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -360,7 +360,7 @@ requirements.txt
 <a class="reference external" href="http://flask.pocoo.org/docs/templating/#context">http://flask.pocoo.org/docs/templating/#context</a>-processors（中文翻译：<a class="reference external" href="http://www.pythondoc.com/flask/templating.html#id6">http://www.pythondoc.com/flask/templating.html#id6</a>）。</li>
 </ul>
 </div>
-<p>现在是时候定义在我们模板中使用的 <code class="docutils literal"><span class="pre">nav_link</span></code> 宏。</p>
+<p>现在是时候定义在我们模板中使用的 <tt class="docutils literal"><span class="pre">nav_link</span></tt> 宏。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -380,7 +380,7 @@ requirements.txt
 {% endmacro %}
 </pre></div>
 </td></tr></table></div>
-<p>现在我们已经在 <em>myapp/templates/macros.html</em> 中定义了宏。在这个宏中我们使用了 Flask 的 <code class="docutils literal"><span class="pre">request</span></code> 对象 — 默认情况下在 Jinja 上下文中是可用的 — 用来检查传入到 <code class="docutils literal"><span class="pre">nav_link</span></code> 中的路由的端点是否是当前请求。如果是，我们正在当前页面上，接着我们标记它为活跃的。</p>
+<p>现在我们已经在 <em>myapp/templates/macros.html</em> 中定义了宏。在这个宏中我们使用了 Flask 的 <tt class="docutils literal"><span class="pre">request</span></tt> 对象 — 默认情况下在 Jinja 上下文中是可用的 — 用来检查传入到 <tt class="docutils literal"><span class="pre">nav_link</span></tt> 中的路由的端点是否是当前请求。如果是，我们正在当前页面上，接着我们标记它为活跃的。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">从 x 导入 y 语句采用了 x 的相对路径。如果我们的模板是 <em>myapp/templates/user/blog.html</em>，我们可以在使用 <a href="#id7"><span class="problematic" id="id8">``</span></a>from &#8221;../macros.html&#8221; 导入 nav_link。</p>
@@ -388,21 +388,21 @@ requirements.txt
 </div>
 <div class="section" id="id9">
 <h2>自定义过滤器<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
-<p>Jinja 过滤器是一个函数，它能够在 <code class="docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></code> 中用于处理一个表达式的结果。在表达式结果输出到模板之前它就被调用。</p>
+<p>Jinja 过滤器是一个函数，它能够在 <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></tt> 中用于处理一个表达式的结果。在表达式结果输出到模板之前它就被调用。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre>&lt;h2&gt;{{ article.title|title }}&lt;/h2&gt;
 </pre></div>
 </td></tr></table></div>
-<p>在这段代码中，<code class="docutils literal"><span class="pre">title</span></code> 过滤器接受 <code class="docutils literal"><span class="pre">article.title</span></code> 作为参数并且返回一个过滤后的标题，接着过滤后的标题将会输出到模板中。这就像 UNIX 的“管道化”一个程序到另一个程序的输出。</p>
+<p>在这段代码中，<tt class="docutils literal"><span class="pre">title</span></tt> 过滤器接受 <tt class="docutils literal"><span class="pre">article.title</span></tt> 作为参数并且返回一个过滤后的标题，接着过滤后的标题将会输出到模板中。这就像 UNIX 的“管道化”一个程序到另一个程序的输出。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">有很多像 <code class="docutils literal"><span class="pre">title</span></code> 一样的内置过滤器。请参阅 Jinja 文档中的 <a class="reference external" href="http://jinja.pocoo.org/docs/templates/#builtin-filters">完整列表</a>。</p>
+<p class="last">有很多像 <tt class="docutils literal"><span class="pre">title</span></tt> 一样的内置过滤器。请参阅 Jinja 文档中的 <a class="reference external" href="http://jinja.pocoo.org/docs/templates/#builtin-filters">完整列表</a>。</p>
 </div>
-<p>我们可以在我们的 Jinja 模板中定义自己的过滤器供使用。举例来说，我们将会实现一个简单 <code class="docutils literal"><span class="pre">caps</span></code> 过滤器用来大写一个字符串中所有的字母。</p>
+<p>我们可以在我们的 Jinja 模板中定义自己的过滤器供使用。举例来说，我们将会实现一个简单 <tt class="docutils literal"><span class="pre">caps</span></tt> 过滤器用来大写一个字符串中所有的字母。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Jinja 已经有一个 <code class="docutils literal"><span class="pre">upper</span></code> 过滤器来做这样的事情，并且还有一个 <code class="docutils literal"><span class="pre">capitalize</span></code> 过滤器，它能用来大写第一个字母，小写其余的字母。这些也能处理 unicode 转换，但是我们会继续我们的示例，让大家目前能够知道如何自定义过滤器。</p>
+<p class="last">Jinja 已经有一个 <tt class="docutils literal"><span class="pre">upper</span></tt> 过滤器来做这样的事情，并且还有一个 <tt class="docutils literal"><span class="pre">capitalize</span></tt> 过滤器，它能用来大写第一个字母，小写其余的字母。这些也能处理 unicode 转换，但是我们会继续我们的示例，让大家目前能够知道如何自定义过滤器。</p>
 </div>
-<p>我们要在 <em>myapp/util/filters.py</em> 中定义我们的过滤器。这里给出一个 <code class="docutils literal"><span class="pre">util</span></code> 包，它里面有各种各样的模块。</p>
+<p>我们要在 <em>myapp/util/filters.py</em> 中定义我们的过滤器。这里给出一个 <tt class="docutils literal"><span class="pre">util</span></tt> 包，它里面有各种各样的模块。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -420,7 +420,7 @@ requirements.txt
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">uppercase</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p>在这段代码中我们使用 <code class="docutils literal"><span class="pre">&#64;app.template_filter()</span></code> 装饰器注册我们的函数成一个 Jinja 过滤器。默认的过滤器名称就是函数的名称，但是你可以传入一个参数到装饰器中来改变它。</p>
+<p>在这段代码中我们使用 <tt class="docutils literal"><span class="pre">&#64;app.template_filter()</span></tt> 装饰器注册我们的函数成一个 Jinja 过滤器。默认的过滤器名称就是函数的名称，但是你可以传入一个参数到装饰器中来改变它。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -430,7 +430,7 @@ requirements.txt
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">uppercase</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p>现在我们可以在模板中调用 <code class="docutils literal"><span class="pre">make_caps</span></code> 而不是 <code class="docutils literal"><span class="pre">caps</span></code>：<code class="docutils literal"><span class="pre">{{</span> <span class="pre">&quot;hello</span> <span class="pre">world!&quot;|make_caps</span> <span class="pre">}}</span></code>。</p>
+<p>现在我们可以在模板中调用 <tt class="docutils literal"><span class="pre">make_caps</span></tt> 而不是 <tt class="docutils literal"><span class="pre">caps</span></tt>：<tt class="docutils literal"><span class="pre">{{</span> <span class="pre">&quot;hello</span> <span class="pre">world!&quot;|make_caps</span> <span class="pre">}}</span></tt>。</p>
 <p>为了要使用让我们的过滤器在模板中可用的话，我只需要在我们的顶层 <em>__init.py__</em> 的中导入它。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -446,7 +446,7 @@ requirements.txt
 <h2>摘要<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>使用 Jinja 模板。</li>
-<li>Jinja 有两种分隔符。<code class="docutils literal"><span class="pre">{%</span> <span class="pre">...</span> <span class="pre">%}</span></code> 和 <code class="docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></code>。
+<li>Jinja 有两种分隔符。<tt class="docutils literal"><span class="pre">{%</span> <span class="pre">...</span> <span class="pre">%}</span></tt> 和 <tt class="docutils literal"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></tt>。
 第一个用于执行类似 for 循环或者赋值的声明，后者是用于输出表达的结果到模板中。</li>
 <li>模板应该在 <em>myapp/templates/</em> 中 — 例如，在应用程序包中的一个目录。</li>
 <li>我建议模板/目录结构反映应用程序的 URL 结构。</li>

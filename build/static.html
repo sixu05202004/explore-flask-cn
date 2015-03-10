@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -237,7 +237,7 @@ run.py
 </td></tr></table></div>
 <div class="section" id="favicon">
 <h3>添加一个 favicon<a class="headerlink" href="#favicon" title="Permalink to this headline">¶</a></h3>
-<p>在我们静态目录的文件是可以通过 <em>example.com/static/</em> 访问的。默认情况下，网页浏览器以及其它软件期望我们的 favicon 是在 <em>example.com/favicon.ico</em>。为了解决这个矛盾，我们在网站模板中的 <code class="docutils literal"><span class="pre">&lt;head&gt;</span></code> 部分添加如下的内容。</p>
+<p>在我们静态目录的文件是可以通过 <em>example.com/static/</em> 访问的。默认情况下，网页浏览器以及其它软件期望我们的 favicon 是在 <em>example.com/favicon.ico</em>。为了解决这个矛盾，我们在网站模板中的 <tt class="docutils literal"><span class="pre">&lt;head&gt;</span></tt> 部分添加如下的内容。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre>&lt;link rel=&quot;shortcut icon&quot;
     href=&quot;{{ url_for(&#39;static&#39;, filename=&#39;img/favicon.ico&#39;) }}&quot;&gt;
@@ -283,7 +283,7 @@ run.py
 </td></tr></table></div>
 <div class="section" id="bundles">
 <h3>定义束/包（bundles）<a class="headerlink" href="#bundles" title="Permalink to this headline">¶</a></h3>
-<p>我们的应用程序有两个部分：公共站点和管理面板，在我们的应用程序中分别称为 &#8220;home&#8221; 和 &#8220;admin&#8221;。我们将定义四个束/包（bundles）：为每一部分定义一个 JavaScript 和 CSS 束/包。我们将把它们放在我们的 <code class="docutils literal"><span class="pre">util</span></code> 包里的一个 assets 模块里。</p>
+<p>我们的应用程序有两个部分：公共站点和管理面板，在我们的应用程序中分别称为 &#8220;home&#8221; 和 &#8220;admin&#8221;。我们将定义四个束/包（bundles）：为每一部分定义一个 JavaScript 和 CSS 束/包。我们将把它们放在我们的 <tt class="docutils literal"><span class="pre">util</span></tt> 包里的一个 assets 模块里。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -355,7 +355,7 @@ assets.register(bundles)
 </td></tr></table></div>
 <p>Flask-Assets 按照它们被列出的次序来合并你的文件。如果 <em>admin.js</em> 需要 <em>jquery-1.10.2.js</em> 的话，确保 jquery 列在最前面。</p>
 <p>为了更容易注册，我们定义束/包在一个目录里。Flask-Assets 内部使用的 webassets 包让我们可以用多种方式来注册束/包（bundles），包括像我们在上面代码段中传入一个字典。<a class="footnote-reference" href="#id8" id="id3">[1]</a></p>
-<p>因为我们在 <code class="docutils literal"><span class="pre">util.assets</span></code> 中注册了我们的束/包（bundles），所有我们必须要做的就是在我们的应用程序初始化后在 <em>__init__.py</em> 中导入 <code class="docutils literal"><span class="pre">assets</span></code>。</p>
+<p>因为我们在 <tt class="docutils literal"><span class="pre">util.assets</span></tt> 中注册了我们的束/包（bundles），所有我们必须要做的就是在我们的应用程序初始化后在 <em>__init__.py</em> 中导入 <tt class="docutils literal"><span class="pre">assets</span></tt>。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -503,7 +503,7 @@ assets.register(bundles)
 </td></tr></table></div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">要使用 <code class="docutils literal"><span class="pre">jsmin</span></code> 和 <code class="docutils literal"><span class="pre">cssmin</span></code> 过滤器，你需要安装 <code class="docutils literal"><span class="pre">jsmin</span></code> 和 <code class="docutils literal"><span class="pre">cssmin</span></code> 包（例如，使用 <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jsmin</span> <span class="pre">cssmin</span></code>）。确保也在 <em>requirements.txt</em> 中添加它们。</p>
+<p class="last">要使用 <tt class="docutils literal"><span class="pre">jsmin</span></tt> 和 <tt class="docutils literal"><span class="pre">cssmin</span></tt> 过滤器，你需要安装 <tt class="docutils literal"><span class="pre">jsmin</span></tt> 和 <tt class="docutils literal"><span class="pre">cssmin</span></tt> 包（例如，使用 <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">jsmin</span> <span class="pre">cssmin</span></tt>）。确保也在 <em>requirements.txt</em> 中添加它们。</p>
 </div>
 <p>Flask-Assets 在模板第一次被渲染的时候会合并和压缩我们的文件，并且在其中一个源文件发生变化的时候会自动地更新压缩文件。</p>
 <div class="admonition note">

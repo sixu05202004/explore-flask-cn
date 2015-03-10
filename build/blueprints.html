@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -229,7 +229,7 @@
     models.py
 </pre></div>
 </td></tr></table></div>
-<p>除了 <em>yourapp/views/__init__.py</em>，在上面列表中的 <em>yourapp/views/</em> 文件夹中的每一个 <em>.py</em> 文件都是一个蓝图。在 <em>yourapp/__init__.py</em> 中我们要导入这些蓝图并且在我们的 <code class="docutils literal"><span class="pre">Flask()</span></code> 对象中 <strong>注册</strong> 它们。我们会在本章的后面看看实现方式。</p>
+<p>除了 <em>yourapp/views/__init__.py</em>，在上面列表中的 <em>yourapp/views/</em> 文件夹中的每一个 <em>.py</em> 文件都是一个蓝图。在 <em>yourapp/__init__.py</em> 中我们要导入这些蓝图并且在我们的 <tt class="docutils literal"><span class="pre">Flask()</span></tt> 对象中 <strong>注册</strong> 它们。我们会在本章的后面看看实现方式。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Flask 站点：<a class="reference external" href="http://flask.pocoo.org">http://flask.pocoo.org</a> 使用的就是这种结构。你自己可以到 <a class="reference external" href="https://github.com/mitsuhiko/flask-website/tree/master/flask_website">GitHub</a> 上一睹真容。</p>
@@ -275,7 +275,7 @@
     models.py
 </pre></div>
 </td></tr></table></div>
-<p>像上面列出的应用程序的分区结构，在 <em>yourapp/</em> 中每一个文件夹都是一个单独的蓝图。所有的这些蓝图都会应用到顶层 <em>__init__.py</em> 中的 <code class="docutils literal"><span class="pre">Flask()</span></code> 对象中。</p>
+<p>像上面列出的应用程序的分区结构，在 <em>yourapp/</em> 中每一个文件夹都是一个单独的蓝图。所有的这些蓝图都会应用到顶层 <em>__init__.py</em> 中的 <tt class="docutils literal"><span class="pre">Flask()</span></tt> 对象中。</p>
 </div>
 <div class="section" id="id8">
 <h3>哪一个是最好的？<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
@@ -408,7 +408,7 @@
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/about.html&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>要创建一个蓝图对象，我们先导入 <code class="docutils literal"><span class="pre">Blueprint()</span></code> 类并且用参数 <code class="docutils literal"><span class="pre">name</span></code> 和 <code class="docutils literal"><span class="pre">import_name</span></code> 初始化它。通常情况下，<code class="docutils literal"><span class="pre">import_name</span></code> 就是 <code class="docutils literal"><span class="pre">__name__</span></code>，这是一个包含当前模块名称的特殊 Python 变量。</p>
+<p>要创建一个蓝图对象，我们先导入 <tt class="docutils literal"><span class="pre">Blueprint()</span></tt> 类并且用参数 <tt class="docutils literal"><span class="pre">name</span></tt> 和 <tt class="docutils literal"><span class="pre">import_name</span></tt> 初始化它。通常情况下，<tt class="docutils literal"><span class="pre">import_name</span></tt> 就是 <tt class="docutils literal"><span class="pre">__name__</span></tt>，这是一个包含当前模块名称的特殊 Python 变量。</p>
 <p>在这个 Facebook 示例中我们使用了一个功能结构。如果我们使用分区结构的话，我们要通知 Flask 蓝图有自己的模板和静态文件夹。此块的代码大概的样子如下所示。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -433,13 +433,13 @@
 <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>现在定义在 <em>facebook/views/profile.py</em> 上的路由（例如，<code class="docutils literal"><span class="pre">/&lt;user_url_slug&gt;</span></code>）在应用程序上注册并且表现得像你使用 <code class="docutils literal"><span class="pre">&#64;app.route()</span></code> 定义它们一样。</p>
+<p>现在定义在 <em>facebook/views/profile.py</em> 上的路由（例如，<tt class="docutils literal"><span class="pre">/&lt;user_url_slug&gt;</span></tt>）在应用程序上注册并且表现得像你使用 <tt class="docutils literal"><span class="pre">&#64;app.route()</span></tt> 定义它们一样。</p>
 </div>
 <div class="section" id="url">
 <h3>使用动态的 URL 前缀<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h3>
-<p>继续 Facebook 例子，注意到所有的用户资料路由都是以 <code class="docutils literal"><span class="pre">&lt;user_url_slug&gt;</span></code> 开始并且把它的值传递给视图。我们希望用户们能够通过浏览像 <em>https://facebo-ok.com/john.doe</em> URL 访问用户资料页。我们可以通过为所有的蓝图的路由定义一个动态的前缀来停止重复工作。</p>
+<p>继续 Facebook 例子，注意到所有的用户资料路由都是以 <tt class="docutils literal"><span class="pre">&lt;user_url_slug&gt;</span></tt> 开始并且把它的值传递给视图。我们希望用户们能够通过浏览像 <em>https://facebo-ok.com/john.doe</em> URL 访问用户资料页。我们可以通过为所有的蓝图的路由定义一个动态的前缀来停止重复工作。</p>
 <p>蓝图可以让我们定义动态和静态的前缀。我们可以通知 Flask 在一个蓝图中的所有的路由都是以 <em>/profile</em> 为前缀的（这里的 <em>/profile</em> 只是一个示例），这就是一个静态的前缀。至于 Facebook 示例，前缀是基于浏览的用户资料而变化。无论他们浏览哪个用户的个人资料，我们都应该在 URL 标签中显示。这就是一个动态的前缀。</p>
-<p>我们可以选择在什么时候定义我们的前缀。我们可以在两个地方中的任意一个定义前缀：当我们实例化 <code class="docutils literal"><span class="pre">Blueprint()</span></code> 类或者当我们用 <code class="docutils literal"><span class="pre">app.register_blueprint()</span></code> 注册它的时候。</p>
+<p>我们可以选择在什么时候定义我们的前缀。我们可以在两个地方中的任意一个定义前缀：当我们实例化 <tt class="docutils literal"><span class="pre">Blueprint()</span></tt> 类或者当我们用 <tt class="docutils literal"><span class="pre">app.register_blueprint()</span></tt> 注册它的时候。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -470,8 +470,8 @@
 <span class="n">app</span><span class="o">.</span><span class="n">register_blueprint</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">url_prefix</span><span class="o">=</span><span class="s">&#39;/&lt;user_url_slug&gt;&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>尽管没有任何技术因素限制任何一种方法，最好是在注册的时候统一定义可用的前缀。这使得以后修改或者调整更加容易和方便些。因为这个原因，我建议在注册的时候设置 <code class="docutils literal"><span class="pre">url_prefix</span></code>。</p>
-<p>我们可以在动态前缀中使用转换器，就像在 <code class="docutils literal"><span class="pre">route()</span></code> 调用中一样。这个也包含了我们自定义的转换器。当使用了转换器，我们可以在把前缀交给视图之前进行预处理。在这个例子中我们要基于传入到我们用户资料蓝图的 URL 中的 user_url_slug 来获取用户对象。这里我们需要使用 <code class="docutils literal"><span class="pre">url_value_preprocessor()</span></code> 装饰一个函数来完成这个需求。</p>
+<p>尽管没有任何技术因素限制任何一种方法，最好是在注册的时候统一定义可用的前缀。这使得以后修改或者调整更加容易和方便些。因为这个原因，我建议在注册的时候设置 <tt class="docutils literal"><span class="pre">url_prefix</span></tt>。</p>
+<p>我们可以在动态前缀中使用转换器，就像在 <tt class="docutils literal"><span class="pre">route()</span></tt> 调用中一样。这个也包含了我们自定义的转换器。当使用了转换器，我们可以在把前缀交给视图之前进行预处理。在这个例子中我们要基于传入到我们用户资料蓝图的 URL 中的 user_url_slug 来获取用户对象。这里我们需要使用 <tt class="docutils literal"><span class="pre">url_value_preprocessor()</span></tt> 装饰一个函数来完成这个需求。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -523,7 +523,7 @@
     <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">&#39;profile/about.html&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>我们使用 <code class="docutils literal"><span class="pre">g</span></code> 对象来存储用户对象并且 <code class="docutils literal"><span class="pre">g</span></code> 可以在 Jinja2 模板中使用。这就意味着对于实现一个极其简单的系统的话，我们现在要做的就是在视图中渲染模板。</p>
+<p>我们使用 <tt class="docutils literal"><span class="pre">g</span></tt> 对象来存储用户对象并且 <tt class="docutils literal"><span class="pre">g</span></tt> 可以在 Jinja2 模板中使用。这就意味着对于实现一个极其简单的系统的话，我们现在要做的就是在视图中渲染模板。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -690,7 +690,7 @@ import .views
 </pre></div>
 </td></tr></table></div>
 <p>现在我们从数据库中获取了站点信息，我们将会把用户的站点展示给正在请求他们子域的访问者。</p>
-<p>为了让 Flask 能和子域一起工作，我们将需要指定 <code class="docutils literal"><span class="pre">SERVER_NAME</span></code> 配置变量。</p>
+<p>为了让 Flask 能和子域一起工作，我们将需要指定 <tt class="docutils literal"><span class="pre">SERVER_NAME</span></tt> 配置变量。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># config.py</span>
@@ -700,7 +700,7 @@ import .views
 </td></tr></table></div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>几分钟以前，当我正在起草这一章节的时候，有人在 IRC 说他们的子域在开发环境上工作正常，但是在生产环境上不正常。我问他们是否已经配置 <code class="docutils literal"><span class="pre">SERVER_NAME</span></code>，事实证明他们在开发环境上设置但是没有在生产环境上配置。在生产环境上设置了 <code class="docutils literal"><span class="pre">SERVER_NAME</span></code> 解决他们的问题。</p>
+<p>几分钟以前，当我正在起草这一章节的时候，有人在 IRC 说他们的子域在开发环境上工作正常，但是在生产环境上不正常。我问他们是否已经配置 <tt class="docutils literal"><span class="pre">SERVER_NAME</span></tt>，事实证明他们在开发环境上设置但是没有在生产环境上配置。在生产环境上设置了 <tt class="docutils literal"><span class="pre">SERVER_NAME</span></tt> 解决他们的问题。</p>
 <p>在 <a class="reference external" href="http://dev.pocoo.org/irclogs/%23pocoo.2013-07-30.log">http://dev.pocoo.org/irclogs/%23pocoo.2013-07-30.log</a> 上可以看到我和 aplavin 之间的对话。</p>
 <p class="last">我觉得这是足够巧合的，并且值得列入本节。</p>
 </div>
@@ -903,7 +903,7 @@ import .views
 <li>蓝图是组织你的应用程序的一种很好的方式。</li>
 <li>在分区结构中，每一个蓝图是一个视图，模板，静态文件的集合，它们构成了应用程序的一部分。</li>
 <li>在功能结构中，每一个蓝图只是视图的集合。所有的模板放在一起，静态文件也一样。</li>
-<li>要使用一个蓝图，你首先需要定义它，接着通过调用 <code class="docutils literal"><span class="pre">Flask.register_blueprint().</span></code> 来注册它。</li>
+<li>要使用一个蓝图，你首先需要定义它，接着通过调用 <tt class="docutils literal"><span class="pre">Flask.register_blueprint().</span></tt> 来注册它。</li>
 <li>你可以定义一个动态的 URL 前缀，它能够用于在一个蓝图里所有的路由。</li>
 <li>你也可以定义一个动态的子域，它能够用于一个蓝图里所有的路由。</li>
 <li>使用蓝图重构一个越来越大的应用程序能够用 5 个小步骤来完成。</li>

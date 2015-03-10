@@ -189,8 +189,8 @@
 <h2>使用 virtualenv 管理你的环境<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>  是用于在所谓 <strong>虚拟环境</strong> 中隔离你的应用程序的一个工具。一个虚拟环境是包含了你的应用依赖的软件的一个目录。一个虚拟环境也能够改变你的环境变量以维持你的开发环境包含的环境变量。不用下载包，像 Flask， 到你系统级或者用户级的包目录，我们可以下载它们到一个独立的并且只为我们应用使用的目录。这就可以很容易地指定使用的 Python 的版本以及每一个项目依赖的包。</p>
 <p>Virtualenv 也可以让你在不同的项目中使用相同的包的不同版本。这种灵活性可能是十分重要的，如果你正使用一个旧的系统并且它的上面有几个项目需要不同的版本。</p>
-<p>当使用 virtualenv 的时候，你通常只需要安装几个的 Python 包在你的系统上。其中一个就是 virtualenv 本身。你可以使用 Pip 来安装 <code class="docutils literal"><span class="pre">virtualenv</span></code> 包。</p>
-<p>一旦在你的系统上安装了 virtualenv，你可以开始创建虚拟环境。前往你项目所在的目录并且运行 <code class="docutils literal"><span class="pre">virtualenv</span></code> 命令。它需要一个参数，这个参数就是虚拟环境的目标目录。下面展示了它大概的样子。</p>
+<p>当使用 virtualenv 的时候，你通常只需要安装几个的 Python 包在你的系统上。其中一个就是 virtualenv 本身。你可以使用 Pip 来安装 <tt class="docutils literal"><span class="pre">virtualenv</span></tt> 包。</p>
+<p>一旦在你的系统上安装了 virtualenv，你可以开始创建虚拟环境。前往你项目所在的目录并且运行 <tt class="docutils literal"><span class="pre">virtualenv</span></tt> 命令。它需要一个参数，这个参数就是虚拟环境的目标目录。下面展示了它大概的样子。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -215,9 +215,9 @@ $ source venv/bin/activate
 /Users/robert/Code/myapp/venv/bin/python
 </pre></div>
 </td></tr></table></div>
-<p><em>bin/activate</em> 脚本对你的 shell 环境变量进行一些改变以致一切都指向新的虚拟环境而不是全局系统。你可以在上面的代码块中看到效果。激活后，<code class="docutils literal"><span class="pre">python</span></code> 命令指向虚拟环境的中 Python 的 bin 目录。当虚拟环境激活后，使用 Pip 安装的依赖包会被下载到虚拟环境中而不是全局系统。</p>
+<p><em>bin/activate</em> 脚本对你的 shell 环境变量进行一些改变以致一切都指向新的虚拟环境而不是全局系统。你可以在上面的代码块中看到效果。激活后，<tt class="docutils literal"><span class="pre">python</span></tt> 命令指向虚拟环境的中 Python 的 bin 目录。当虚拟环境激活后，使用 Pip 安装的依赖包会被下载到虚拟环境中而不是全局系统。</p>
 <p>你可能会注意到 shell 中的提示符也已经改变了。virtualenv 预先设定目前激活虚拟环境的名称，因此你会知道你不是在全局系统上工作。</p>
-<p>你可以通过运行 <code class="docutils literal"><span class="pre">deactivate</span></code> 命令停用你的虚拟环境。</p>
+<p>你可以通过运行 <tt class="docutils literal"><span class="pre">deactivate</span></tt> 命令停用你的虚拟环境。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre>(venv)$ deactivate
 $
@@ -232,7 +232,7 @@ $
 <p class="first admonition-title">Warning</p>
 <p class="last">请确保在安装 virtualenvwrapper 之前你已经停用所有的虚拟环境。你需要把它安装在全局系统中，而不是虚拟环境中。</p>
 </div>
-<p>现在，不用运行 <code class="docutils literal"><span class="pre">virtualenv</span></code> 来创建一个环境，你需要运行 <code class="docutils literal"><span class="pre">mkvirtualenv</span></code>：</p>
+<p>现在，不用运行 <tt class="docutils literal"><span class="pre">virtualenv</span></tt> 来创建一个环境，你需要运行 <tt class="docutils literal"><span class="pre">mkvirtualenv</span></tt>：</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -244,7 +244,7 @@ Installing pip..................[...].....done.
 (rocket)$
 </pre></div>
 </td></tr></table></div>
-<p><code class="docutils literal"><span class="pre">mkvirtualenv</span></code> 在你虚拟环境目录中创建一个文件夹并且为你激活虚拟环境。就像上面的 <code class="docutils literal"><span class="pre">virtualenv</span></code> 一样，<code class="docutils literal"><span class="pre">python</span></code> 以及 <code class="docutils literal"><span class="pre">pip</span></code> 指向虚拟环境中而不是全局系统的二进制文件。要激活一个特定的环境，使用命令：<code class="docutils literal"><span class="pre">workon</span> <span class="pre">[environment</span> <span class="pre">name]</span></code>。<code class="docutils literal"><span class="pre">deactivate</span></code> 仍然会停用虚拟环境。</p>
+<p><tt class="docutils literal"><span class="pre">mkvirtualenv</span></tt> 在你虚拟环境目录中创建一个文件夹并且为你激活虚拟环境。就像上面的 <tt class="docutils literal"><span class="pre">virtualenv</span></tt> 一样，<tt class="docutils literal"><span class="pre">python</span></tt> 以及 <tt class="docutils literal"><span class="pre">pip</span></tt> 指向虚拟环境中而不是全局系统的二进制文件。要激活一个特定的环境，使用命令：<tt class="docutils literal"><span class="pre">workon</span> <span class="pre">[environment</span> <span class="pre">name]</span></tt>。<tt class="docutils literal"><span class="pre">deactivate</span></tt> 仍然会停用虚拟环境。</p>
 </div>
 <div class="section" id="id4">
 <h3>安装依赖包<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
@@ -272,7 +272,7 @@ Cleaning up...
 </div>
 <div class="section" id="id5">
 <h3>人工管理依赖包<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>随着项目的发展，你可能会发现 <code class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></code> 列出的某些包实际上并不是运行应用必须的。你安装这些包仅仅为开发用的。<code class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></code> 并不能区分，它仅仅列出目前已经安装的包。因此，你可能要手动地管理这些依赖包。你可以分别把那些运行应用必须的包放入 <em>require_run.txt</em> 以及那些开发应用程序需要的包放入 <em>require_dev.txt</em> 。</p>
+<p>随着项目的发展，你可能会发现 <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></tt> 列出的某些包实际上并不是运行应用必须的。你安装这些包仅仅为开发用的。<tt class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></tt> 并不能区分，它仅仅列出目前已经安装的包。因此，你可能要手动地管理这些依赖包。你可以分别把那些运行应用必须的包放入 <em>require_run.txt</em> 以及那些开发应用程序需要的包放入 <em>require_dev.txt</em> 。</p>
 </div>
 </div>
 <div class="section" id="id6">
@@ -303,7 +303,7 @@ instance/
 <h2>调试<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id9">
 <h3>调试模式<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>Flask 有一个称为调试模式方便的功能。要打开调试功能的话，你只必须在你的开发配置中设置 <code class="docutils literal"><span class="pre">debug</span> <span class="pre">=</span> <span class="pre">True</span></code>。当它打开的时候，服务器会在代码变化的时候自动加载并且出错的时候会伴随着一个堆栈跟踪和一个交互式控制台。</p>
+<p>Flask 有一个称为调试模式方便的功能。要打开调试功能的话，你只必须在你的开发配置中设置 <tt class="docutils literal"><span class="pre">debug</span> <span class="pre">=</span> <span class="pre">True</span></tt>。当它打开的时候，服务器会在代码变化的时候自动加载并且出错的时候会伴随着一个堆栈跟踪和一个交互式控制台。</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">小心！不要在生产环境中使用调试模式。交互式控制台允许执行任意代码并会是一个巨大的安全漏洞。</p>
@@ -328,8 +328,8 @@ instance/
 <li>使用 virtualenvwrapper 来保持你的虚拟环境在一起。</li>
 <li>用一个或者多个文本文件来追踪依赖性。</li>
 <li>使用一个版本控制系统。我推荐 Git。</li>
-<li>使用 .gitignore 来让杂乱和机密远离版本控制。</li>
-<li>在开发中调试模式能够提供给你关于问题的信息。</li>
+<li>使用 .gitignore 来让杂乱和敏感信息远离版本控制。</li>
+<li>在开发中调试模式能够提供给你关于错误/问题的信息。</li>
 <li>Flask-DebugToolbar 扩展会提供给你更多的信息。</li>
 </ul>
 </div>

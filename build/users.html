@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -192,9 +192,9 @@
 <div class="section" id="id2">
 <h2>确认电子邮箱<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>当一个新用户提供我们他们的邮箱，我们通常要确认他们提供给我们的邮箱是否是正确的。一旦我们已经通过邮箱验证，我们可以安心地给我们用户发送密码重置连接以及其它敏感的信息，而无需担心是谁在接收这些内容。</p>
-<p>确认邮箱最常见的模式之一就是发送一个 URL 唯一的密码重置链接，当访问它的时候，证实了用户的邮箱地址。例如，<a class="reference external" href="mailto:john&#37;&#52;&#48;gmail&#46;com">john<span>&#64;</span>gmail<span>&#46;</span>com</a> 注册了我们的应用程序。我们把他的用户数据插入到数据库中，该条用户数据的 <code class="docutils literal"><span class="pre">email_confirmed</span></code> 字段被设置成 <code class="docutils literal"><span class="pre">False</span></code> 并且发送了一封携带唯一的 URL 的邮件到 <a class="reference external" href="mailto:john&#37;&#52;&#48;gmail&#46;com">john<span>&#64;</span>gmail<span>&#46;</span>com</a> 上。这个 URL 通常包含一个唯一的令牌，例如，<em>http://myapp.com/accounts/confirm-/Q2hhZCBDYXRsZXR0IHJvY2tzIG15IHNvY2tz</em>。当 John 收到这封邮件的时候，他点击链接。我们的应用程序会检查令牌，知道谁在确认邮箱并且设置 John 的 <code class="docutils literal"><span class="pre">email_confirmed</span></code> 字段为 <code class="docutils literal"><span class="pre">True</span></code>。</p>
+<p>确认邮箱最常见的模式之一就是发送一个 URL 唯一的密码重置链接，当访问它的时候，证实了用户的邮箱地址。例如，<a class="reference external" href="mailto:john&#37;&#52;&#48;gmail&#46;com">john<span>&#64;</span>gmail<span>&#46;</span>com</a> 注册了我们的应用程序。我们把他的用户数据插入到数据库中，该条用户数据的 <tt class="docutils literal"><span class="pre">email_confirmed</span></tt> 字段被设置成 <tt class="docutils literal"><span class="pre">False</span></tt> 并且发送了一封携带唯一的 URL 的邮件到 <a class="reference external" href="mailto:john&#37;&#52;&#48;gmail&#46;com">john<span>&#64;</span>gmail<span>&#46;</span>com</a> 上。这个 URL 通常包含一个唯一的令牌，例如，<em>http://myapp.com/accounts/confirm-/Q2hhZCBDYXRsZXR0IHJvY2tzIG15IHNvY2tz</em>。当 John 收到这封邮件的时候，他点击链接。我们的应用程序会检查令牌，知道谁在确认邮箱并且设置 John 的 <tt class="docutils literal"><span class="pre">email_confirmed</span></tt> 字段为 <tt class="docutils literal"><span class="pre">True</span></tt>。</p>
 <p>我们是如何知道 URL 中的令牌是对应哪个用户？一种方式就是在令牌被创建的时候存储到数据库中，当我们收到确认请求的时候到数据库中检查对比。这是一个很大的开销，幸运地是，我们不必这么做。</p>
-<p>我们会对邮箱地址编码成令牌。并且令牌也包含一个时间戳，该时间戳是让我们设置一个令牌在什么时间内有效的时间限制。为了完成这些，我们使用 <code class="docutils literal"><span class="pre">itsdangerous</span></code> 包。这个包提供我们一个用来发送敏感数据到一个不可信的环境的工具（像发送一封邮件确认令牌到一个未确认的邮箱）。在本例中，我们将会使用 <code class="docutils literal"><span class="pre">URLSafeTimedSerializer</span></code> 类的一个实例。</p>
+<p>我们会对邮箱地址编码成令牌。并且令牌也包含一个时间戳，该时间戳是让我们设置一个令牌在什么时间内有效的时间限制。为了完成这些，我们使用 <tt class="docutils literal"><span class="pre">itsdangerous</span></tt> 包。这个包提供我们一个用来发送敏感数据到一个不可信的环境的工具（像发送一封邮件确认令牌到一个未确认的邮箱）。在本例中，我们将会使用 <tt class="docutils literal"><span class="pre">URLSafeTimedSerializer</span></tt> 类的一个实例。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -354,7 +354,7 @@ Questions? Comments? Email hello@myapp.com.
     <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">&#39;signin&#39;</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<p>这个视图是一个简单的表单视图。我们只在开始的时候添加了 <code class="docutils literal"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">except</span></code> 来检查令牌是否有效。令牌中包含了一个时间戳，因此我们能够告诉 <code class="docutils literal"><span class="pre">ts.loads()</span></code> 引发一个异常如果它大于 <code class="docutils literal"><span class="pre">max_age</span></code> 的话。在本例中，我们设置 <code class="docutils literal"><span class="pre">max_age</span></code> 为 86400 秒，即：24小时。</p>
+<p>这个视图是一个简单的表单视图。我们只在开始的时候添加了 <tt class="docutils literal"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">except</span></tt> 来检查令牌是否有效。令牌中包含了一个时间戳，因此我们能够告诉 <tt class="docutils literal"><span class="pre">ts.loads()</span></tt> 引发一个异常如果它大于 <tt class="docutils literal"><span class="pre">max_age</span></tt> 的话。在本例中，我们设置 <tt class="docutils literal"><span class="pre">max_age</span></tt> 为 86400 秒，即：24小时。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">你可以使用非常相似的方法来实现更新邮箱地址的功能。只要发送一封携带令牌的邮件到新的邮箱，该令牌包含旧的以及新的邮箱地址。如果令牌是有效的，用新的邮箱更新旧的邮箱。</p>
@@ -367,7 +367,7 @@ Questions? Comments? Email hello@myapp.com.
 <p class="first admonition-title">Note</p>
 <p class="last">OWASP 是关于 Web 应用程序安全性的信息的业界最值得信赖的来源之一。看看一些他们 <a class="reference external" href="https://www.owasp.org/index.php/Secure_Coding_Cheat_Sheet#Password_Storage">关于安全编码的建议</a>。</p>
 </div>
-<p>我们将继续并且使用 Flask-Bcrypt 扩展在我们的应用中实现 bcrypt 包。这个包基本上是对 <code class="docutils literal"><span class="pre">py-bcrypt</span></code> 包的封装，但是为我们做了一些很烦人的事情（像在比较散列之前检查字符编码等等）。</p>
+<p>我们将继续并且使用 Flask-Bcrypt 扩展在我们的应用中实现 bcrypt 包。这个包基本上是对 <tt class="docutils literal"><span class="pre">py-bcrypt</span></tt> 包的封装，但是为我们做了一些很烦人的事情（像在比较散列之前检查字符编码等等）。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -397,7 +397,7 @@ Questions? Comments? Email hello@myapp.com.
 <span class="n">generate_password_hash</span><span class="p">(</span><span class="s">&#39;password1&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>现在我们可以使用 UNIX 的 <code class="docutils literal"><span class="pre">time</span></code> 工具来记录时间的消耗数。</p>
+<p>现在我们可以使用 UNIX 的 <tt class="docutils literal"><span class="pre">time</span></tt> 工具来记录时间的消耗数。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -417,7 +417,7 @@ sys     0m0.024s
 <span class="n">BCRYPT_LOG_ROUNDS</span> <span class="o">=</span> <span class="mi">12</span>
 </pre></div>
 </td></tr></table></div>
-<p>现在 Flask-Bcrypt 已经配置好了，是时候开始散列密码。我们可以在接收来自注册表单的请求的视图中手动去散列密码，但是我们必须在密码重置以及密码修改的视图中再次重复这样做。相反，我们要做的就是如何抽象散列，以便我们的应用程序无需我们考虑就能自己完成。这里我们会使用一个 <strong>setter</strong>，这样的话当我们设置 <code class="docutils literal"><span class="pre">user.password</span> <span class="pre">=</span> <span class="pre">'password1'</span></code> 的话，在存储之前就会自动地使用 Bcrypt 散列密码。</p>
+<p>现在 Flask-Bcrypt 已经配置好了，是时候开始散列密码。我们可以在接收来自注册表单的请求的视图中手动去散列密码，但是我们必须在密码重置以及密码修改的视图中再次重复这样做。相反，我们要做的就是如何抽象散列，以便我们的应用程序无需我们考虑就能自己完成。这里我们会使用一个 <strong>setter</strong>，这样的话当我们设置 <tt class="docutils literal"><span class="pre">user.password</span> <span class="pre">=</span> <span class="pre">'password1'</span></tt> 的话，在存储之前就会自动地使用 Bcrypt 散列密码。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -455,7 +455,7 @@ sys     0m0.024s
         <span class="bp">self</span><span class="o">.</span><span class="n">_password</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">generate_password_hash</span><span class="p">(</span><span class="n">plaintext</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>我们使用了 SQLAlchemy 的 hybrid 扩展来定义一个属性，这个属性从相同接口调用的时候拥有不同的功能。当我们为 <code class="docutils literal"><span class="pre">user.password</span></code> 属性赋值的时候，我们的 setter 就被调用。在它里面，我们散列一耳光明文的密码并且存储在用户表的 <code class="docutils literal"><span class="pre">_password</span></code> 字段中。因为我们使用 hybrid 属性，我们可以通过相同的 <code class="docutils literal"><span class="pre">user.password</span></code> 属性来访问散列的密码。</p>
+<p>我们使用了 SQLAlchemy 的 hybrid 扩展来定义一个属性，这个属性从相同接口调用的时候拥有不同的功能。当我们为 <tt class="docutils literal"><span class="pre">user.password</span></tt> 属性赋值的时候，我们的 setter 就被调用。在它里面，我们散列一耳光明文的密码并且存储在用户表的 <tt class="docutils literal"><span class="pre">_password</span></tt> 字段中。因为我们使用 hybrid 属性，我们可以通过相同的 <tt class="docutils literal"><span class="pre">user.password</span></tt> 属性来访问散列的密码。</p>
 <p>现在我们使用上面的模型为应用程序实现一个注册视图。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -494,7 +494,7 @@ sys     0m0.024s
 <div class="section" id="id5">
 <h2>认证<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>既然我们在数据库中有用户了，我们可以实现认证。我们要一个用户提交携带他们的用户名和密码的表单（尽管对一些应用来说这可能是邮箱和密码），接着确保他们是否提供了正确的密码。如果所有的都验证通过了，我们通过在他们的浏览器上设置一个 cookie 来标记他们已经通过认证。下一次他们再过来请求的时候我们通过查找 cookie 知道他们已经登录。</p>
-<p>让我们开始用 WTForms 定义一个 <code class="docutils literal"><span class="pre">UsernamePassword</span></code> 表单。</p>
+<p>让我们开始用 WTForms 定义一个 <tt class="docutils literal"><span class="pre">UsernamePassword</span></tt> 表单。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -542,7 +542,7 @@ class User(db.Model):
 <h3>Flask-Login<a class="headerlink" href="#flask-login" title="Permalink to this headline">¶</a></h3>
 <p>我们下一目标就是定义一个登录的视图，该视图用来服务和接收我们的表单。如果用户输入正确的凭证的话，我们将使用 Flask-Login 扩展来认证他们。这个扩展简化了处理用户会话和认证的过程。</p>
 <p>我们需要的就是对 Flask-Login 进行一些小小的配置。</p>
-<p>在 <em>__init__.py</em> 中，我们将定义 Flask-Login 的 <code class="docutils literal"><span class="pre">login_manager</span></code>。</p>
+<p>在 <em>__init__.py</em> 中，我们将定义 Flask-Login 的 <tt class="docutils literal"><span class="pre">login_manager</span></tt>。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -576,12 +576,12 @@ class User(db.Model):
     <span class="k">return</span> <span class="n">User</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">id</span><span class="o">==</span><span class="n">userid</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p>这里我们创建了一个 <code class="docutils literal"><span class="pre">LoginManager</span></code> 示例，并且用我们的 <code class="docutils literal"><span class="pre">app</span></code> 对象初始化它，定义登录视图并且告诉它如何用一个的用户的 <code class="docutils literal"><span class="pre">id</span></code> 得到用户对象。这是我们使用 Flask-Login 的最基本的配置。</p>
+<p>这里我们创建了一个 <tt class="docutils literal"><span class="pre">LoginManager</span></tt> 示例，并且用我们的 <tt class="docutils literal"><span class="pre">app</span></tt> 对象初始化它，定义登录视图并且告诉它如何用一个的用户的 <tt class="docutils literal"><span class="pre">id</span></tt> 得到用户对象。这是我们使用 Flask-Login 的最基本的配置。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">查看更多 <a class="reference external" href="https://flask-login.readthedocs.org/en/latest/#customizing-the-login-process">自定义 Flask-Login 的方法</a>.</p>
 </div>
-<p>现在我们可以定义处理登录的 <code class="docutils literal"><span class="pre">signin</span></code> 视图。</p>
+<p>现在我们可以定义处理登录的 <tt class="docutils literal"><span class="pre">signin</span></tt> 视图。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -627,7 +627,7 @@ def signin():
     return render_template(&#39;signin.html&#39;, form=form)
 </pre></div>
 </td></tr></table></div>
-<p>我们简单地从 Flask-Login 中导入 <code class="docutils literal"><span class="pre">login_user</span></code> 函数，检查用户登录凭证并且调用 <code class="docutils literal"><span class="pre">login_user(user)</span></code>。你可以使用 <code class="docutils literal"><span class="pre">logout_user()</span></code> 实现用户的退出操作。</p>
+<p>我们简单地从 Flask-Login 中导入 <tt class="docutils literal"><span class="pre">login_user</span></tt> 函数，检查用户登录凭证并且调用 <tt class="docutils literal"><span class="pre">login_user(user)</span></tt>。你可以使用 <tt class="docutils literal"><span class="pre">logout_user()</span></tt> 实现用户的退出操作。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -687,7 +687,7 @@ def signin():
     <span class="n">password</span> <span class="o">=</span> <span class="n">PasswordField</span><span class="p">(</span><span class="s">&#39;Email&#39;</span><span class="p">,</span> <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">DataRequired</span><span class="p">()])</span>
 </pre></div>
 </td></tr></table></div>
-<p>上面的代码假设我们的密码重置的表单只需要一个密码字段（只需要输入一次新密码）。许多应用程序需要用户输入新的密码两次以确保他们没有输错。要做到这一点的话，我们可以简单地添加另一个 <code class="docutils literal"><span class="pre">PasswordField</span></code> 字段，并且添加 <code class="docutils literal"><span class="pre">EqualTo</span></code> WTForms 的验证器。</p>
+<p>上面的代码假设我们的密码重置的表单只需要一个密码字段（只需要输入一次新密码）。许多应用程序需要用户输入新的密码两次以确保他们没有输错。要做到这一点的话，我们可以简单地添加另一个 <tt class="docutils literal"><span class="pre">PasswordField</span></tt> 字段，并且添加 <tt class="docutils literal"><span class="pre">EqualTo</span></tt> WTForms 的验证器。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>用户体验社区（UX）有很多关于处理注册表单的最佳方式的有趣的讨论。我个人十分喜欢 Stack Exchange 用户（Roger Attrill）的想法，他这样说的：</p>

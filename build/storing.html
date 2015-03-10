@@ -60,10 +60,10 @@
             <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">前言</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="preface.html#id2">假设</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id8">动态文件</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id9">本书使用的约定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id13">彩蛋</a></li>
-<li class="toctree-l2"><a class="reference internal" href="preface.html#id14">摘要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id10">动态文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id11">本书使用的约定</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id15">彩蛋</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#id16">摘要</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="conventions.html">编码约定</a><ul>
@@ -215,7 +215,7 @@
 <span class="n">db</span> <span class="o">=</span> <span class="n">SQLAlchemy</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p>首先我们初始化以及配置我们的 Flask 应用程序，接着我们使用它来初始化我们的 SQLAlchemy 处理程序。我们将要使用一个实例文件夹来为我们的数据库配置，所以当我们初始化应用程序应该使用 <code class="docutils literal"><span class="pre">instance_relative_config</span></code> 选项，接着调用 <code class="docutils literal"><span class="pre">app.config.from_pyfile</span></code> 加载它。现在我们可以定义我们的模型。</p>
+<p>首先我们初始化以及配置我们的 Flask 应用程序，接着我们使用它来初始化我们的 SQLAlchemy 处理程序。我们将要使用一个实例文件夹来为我们的数据库配置，所以当我们初始化应用程序应该使用 <tt class="docutils literal"><span class="pre">instance_relative_config</span></tt> 选项，接着调用 <tt class="docutils literal"><span class="pre">app.config.from_pyfile</span></tt> 加载它。现在我们可以定义我们的模型。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -243,7 +243,7 @@
     <span class="n">thrust</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p><code class="docutils literal"><span class="pre">Column</span></code>，<code class="docutils literal"><span class="pre">Integer</span></code>，<code class="docutils literal"><span class="pre">String</span></code>，<code class="docutils literal"><span class="pre">Model</span></code> 以及其它的 SQLAlchemy 类可以从由 Flask-SQLAlchemy 定义的 <code class="docutils literal"><span class="pre">db</span></code> 对象中引用。我们已经定义了一个模型用来存储我们飞行器引擎当前的状态。每一个引起过有一个 id，一个标题以及一个推力水平。</p>
+<p><tt class="docutils literal"><span class="pre">Column</span></tt>，<tt class="docutils literal"><span class="pre">Integer</span></tt>，<tt class="docutils literal"><span class="pre">String</span></tt>，<tt class="docutils literal"><span class="pre">Model</span></tt> 以及其它的 SQLAlchemy 类可以从由 Flask-SQLAlchemy 定义的 <tt class="docutils literal"><span class="pre">db</span></tt> 对象中引用。我们已经定义了一个模型用来存储我们飞行器引擎当前的状态。每一个引起过有一个 id，一个标题以及一个推力水平。</p>
 <p>我们还需要把一些数据库信息添加到我们配置中。我们使用一个实例文件夹为了保持机密的配置变量不在版本控制中，所以我们将要把数据库的配置放入 <em>instance/config.py</em>。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -286,10 +286,10 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 </div>
 <div class="section" id="alembic">
 <h3>Alembic 迁移数据库<a class="headerlink" href="#alembic" title="Permalink to this headline">¶</a></h3>
-<p>数据库的模式不是一成不变的。例如，我们可能要给我们的引擎表添加一个 <code class="docutils literal"><span class="pre">last_fired</span></code> 字段。如果我们没有任何数据的话，我们只要更新模型和再次运行 <code class="docutils literal"><span class="pre">db.create_all()</span></code>。然而，如果我们已经在表中记录了 6 个月的引擎的数据，我们可能不希望从头开始。这就是数据库迁移的工作。</p>
+<p>数据库的模式不是一成不变的。例如，我们可能要给我们的引擎表添加一个 <tt class="docutils literal"><span class="pre">last_fired</span></tt> 字段。如果我们没有任何数据的话，我们只要更新模型和再次运行 <tt class="docutils literal"><span class="pre">db.create_all()</span></tt>。然而，如果我们已经在表中记录了 6 个月的引擎的数据，我们可能不希望从头开始。这就是数据库迁移的工作。</p>
 <p>Alembic 是一个专门为 SQLAlchemy 使用的数据库迁移工具。它能够让我们保持我们的数据模式的版本历史，以便我们后面可以升级到一个新的模式以及甚至退回到一个老的版本。</p>
 <p>Alembic 有一个很广泛的教程，大家很容易入门，因此我只给你一个简单的概述并且指出几件需要注意的事项。</p>
-<p>我们将使用 <code class="docutils literal"><span class="pre">alembic</span> <span class="pre">init</span></code> 命令行创建我们 alembic 的“迁移环境”。一旦我们在我们的仓库/版本库中运行这个命令，我们将会有一个新的文件夹，它有一个很有创意的名字：<em>alembic</em>。下面这个示例改编自 Alembic 教程。</p>
+<p>我们将使用 <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">init</span></tt> 命令行创建我们 alembic 的“迁移环境”。一旦我们在我们的仓库/版本库中运行这个命令，我们将会有一个新的文件夹，它有一个很有创意的名字：<em>alembic</em>。下面这个示例改编自 Alembic 教程。</p>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -333,8 +333,8 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>请把 <em>alembic.ini</em> 添加到 <em>.gitignore</em> 中！你将会把你的数据库的凭证放在这个文件中，因此你 <strong>不会</strong> 要它出现在版本控制中。</p>
 <p class="last">你想让 <em>alembic/</em> 在文本控制中。它并不包含敏感信息（它不可能从你的源代码中产生的）并且保持它在版本控制中意味着有多个副本。</p>
 </div>
-<p>当开始要做出一个模式改变，会有这些步骤要走：首先我们运行 <code class="docutils literal"><span class="pre">alembic</span> <span class="pre">revision</span></code> 来生成一个迁移脚本。接着我们在 <em>myapp/alembic/versions/</em> 中打开一个新生成的 Python 文件并且使用 Alembic 的 <code class="docutils literal"><span class="pre">op</span></code> 对象提供的工具填充 <code class="docutils literal"><span class="pre">upgrade</span></code> 和 <code class="docutils literal"><span class="pre">downgrade</span></code> 函数。</p>
-<p>一旦我们已经准备好我们的迁移脚本，我们可以运行 <code class="docutils literal"><span class="pre">alembic</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> 来迁移我们的数据到最新的版本。</p>
+<p>当开始要做出一个模式改变，会有这些步骤要走：首先我们运行 <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">revision</span></tt> 来生成一个迁移脚本。接着我们在 <em>myapp/alembic/versions/</em> 中打开一个新生成的 Python 文件并且使用 Alembic 的 <tt class="docutils literal"><span class="pre">op</span></tt> 对象提供的工具填充 <tt class="docutils literal"><span class="pre">upgrade</span></tt> 和 <tt class="docutils literal"><span class="pre">downgrade</span></tt> 函数。</p>
+<p>一旦我们已经准备好我们的迁移脚本，我们可以运行 <tt class="docutils literal"><span class="pre">alembic</span> <span class="pre">upgrade</span> <span class="pre">head</span></tt> 来迁移我们的数据到最新的版本。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">关于配置 Alembic，创建你的迁移脚本以及运行你的迁移的细节，请参阅 <a class="reference external" href="http://alembic.readthedocs.org/en/latest/tutorial.html">Alembic 教程</a>。</p>

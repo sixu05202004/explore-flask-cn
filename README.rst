@@ -1,7 +1,7 @@
 Explore Flask 中文翻译
 =========================
 
-欢迎来到 *Explore Flask 中文翻译*。这里是本书的 reStructuredText 源码托管的额地方。如果你想要阅读本书的话，`请到这里
+欢迎来到 *Explore Flask 中文翻译*。这里是本书的 reStructuredText 源码托管的地方。如果你想要阅读本书的话，`请到这里
 <http://www.pythondoc.com/exploreflask/index.html>`_。这里是 *Explore Flask 中文翻译*，其原版内容 `请到这里
 <https://github.com/rpicard/explore-flask>`_。
 
